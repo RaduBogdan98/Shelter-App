@@ -5,7 +5,8 @@ import HomeScreen from '../pages/HomeScreen';
 import FeedScreen from '../pages/FeedScreen';
 import MapScreen from '../pages/MapScreen';
 import ProfileScreen from '../pages/ProfileScreen';
-import { HomeIcon, FeedIcon, MapIcon, ProfileIcon } from '../../assets/bottomTabIcons'
+import { HomeIcon, FeedIcon, MapIcon, ProfileIcon } from '../../assets/bottomTabIcons';
+import { style } from '../resources/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,10 +17,10 @@ export default function BottomTabNavigator() {
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused }) => {
                         switch (route.name) {
-                            case 'Home': return <HomeIcon color={focused ? '#4A7DCB' : '#000'} />;
-                            case 'Feed': return <FeedIcon color={focused ? '#4A7DCB' : '#000'} />;
-                            case 'Map': return <MapIcon color={focused ? '#4A7DCB' : '#000'} />;
-                            case 'Profile': return <ProfileIcon color={focused ? '#4A7DCB' : '#000'} />;
+                            case 'Home': return <HomeIcon color={focused ? style.primaryBlue : style.black} />;
+                            case 'Feed': return <FeedIcon color={focused ? style.primaryBlue : style.black} />;
+                            case 'Map': return <MapIcon color={focused ? style.primaryBlue : style.black} />;
+                            case 'Profile': return <ProfileIcon color={focused ? style.primaryBlue : style.black} />;
                         }
                     },
                     tabBarShowLabel: false,
