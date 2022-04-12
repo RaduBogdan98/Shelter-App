@@ -9,6 +9,5 @@
     <Parameter Name="UserManagementMicroservice_InstanceCount" Value="-1" />
     <Parameter Name="ServiceManagementMicroservice_InstanceCount" Value="-1" />
     <Parameter Name="UserManagementMicroservice_InstanceCount" Value="-1" />
-    <Parameter Name="ShelterAPI_InstanceCount" Value="-1" />
   </Parameters>
 </Application>

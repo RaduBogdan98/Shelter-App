@@ -16,7 +16,5 @@
     <Parameter Name="ServiceManagementMicroservice_ASPNETCORE_ENVIRONMENT" Value="Development" />
     <Parameter Name="UserManagementMicroservice_InstanceCount" Value="1" />
     <Parameter Name="UserManagementMicroservice_ASPNETCORE_ENVIRONMENT" Value="Development" />
-    <Parameter Name="ShelterAPI_InstanceCount" Value="1" />
-    <Parameter Name="ShelterAPI_ASPNETCORE_ENVIRONMENT" Value="Development" />
   </Parameters>
 </Application>

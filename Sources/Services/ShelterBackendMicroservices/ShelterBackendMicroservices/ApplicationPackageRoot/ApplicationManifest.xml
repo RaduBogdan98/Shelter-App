@@ -7,17 +7,6 @@
     <Parameter Name="ServiceManagementMicroservice_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
     <Parameter Name="UserManagementMicroservice_InstanceCount" DefaultValue="-1" />
     <Parameter Name="UserManagementMicroservice_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
-    <Parameter Name="UserManagementMicroservice_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="UserManagementMicroservice_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
-    <Parameter Name="ServiceManagementMicroservice_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="UserManagementMicroservice_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="UserManagementMicroservice_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
-    <Parameter Name="ServiceManagementMicroservice_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="ServiceManagementMicroservice_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
-    <Parameter Name="UserManagementMicroservice_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="UserManagementMicroservice_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
-    <Parameter Name="ShelterAPI_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="ShelterAPI_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -43,45 +32,6 @@
       <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[UserManagementMicroservice_ASPNETCORE_ENVIRONMENT]" />
     </EnvironmentOverrides>
   </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="UserManagementMicroservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <EnvironmentOverrides CodePackageRef="code">
-      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[UserManagementMicroservice_ASPNETCORE_ENVIRONMENT]" />
-    </EnvironmentOverrides>
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="ServiceManagementMicroservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="UserManagementMicroservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <EnvironmentOverrides CodePackageRef="code">
-      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[UserManagementMicroservice_ASPNETCORE_ENVIRONMENT]" />
-    </EnvironmentOverrides>
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="ServiceManagementMicroservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <EnvironmentOverrides CodePackageRef="code">
-      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[ServiceManagementMicroservice_ASPNETCORE_ENVIRONMENT]" />
-    </EnvironmentOverrides>
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="UserManagementMicroservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <EnvironmentOverrides CodePackageRef="code">
-      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[UserManagementMicroservice_ASPNETCORE_ENVIRONMENT]" />
-    </EnvironmentOverrides>
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="ShelterAPIPkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <EnvironmentOverrides CodePackageRef="code">
-      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[ShelterAPI_ASPNETCORE_ENVIRONMENT]" />
-    </EnvironmentOverrides>
-  </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 
          application type is created. You can also create one or more instances of service type using the 
@@ -100,36 +50,6 @@
     </Service>
     <Service Name="UserManagementMicroservice" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="UserManagementMicroserviceType" InstanceCount="[UserManagementMicroservice_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="UserManagementMicroservice" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="UserManagementMicroserviceType" InstanceCount="[UserManagementMicroservice_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="ServiceManagementMicroservice" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="ServiceManagementMicroserviceType" InstanceCount="[ServiceManagementMicroservice_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="UserManagementMicroservice" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="UserManagementMicroserviceType" InstanceCount="[UserManagementMicroservice_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="ServiceManagementMicroservice" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="ServiceManagementMicroserviceType" InstanceCount="[ServiceManagementMicroservice_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="UserManagementMicroservice" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="UserManagementMicroserviceType" InstanceCount="[UserManagementMicroservice_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="ShelterAPI" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="ShelterAPIType" InstanceCount="[ShelterAPI_InstanceCount]">
         <SingletonPartition />
       </StatelessService>
     </Service>
