@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ServiceManagementMicroservice.Model
+﻿namespace ServiceManagementMicroservice.Model
 {
    public class ServiceUser
    {

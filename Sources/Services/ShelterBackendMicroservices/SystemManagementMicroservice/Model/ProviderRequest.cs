@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SystemManagementMicroservice.Model
+﻿namespace SystemManagementMicroservice.Model
 {
    public class ProviderRequest
    {
