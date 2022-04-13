@@ -12,5 +12,7 @@ namespace ServiceManagementMicroservice.DataAccess
       public ServiceContext(DbContextOptions options) : base(options) { }
 
       public DbSet<Service> Services { get; set; }
+
+      public DbSet<ServiceUser> ServicesUsers { get; set; }
    }
 }
