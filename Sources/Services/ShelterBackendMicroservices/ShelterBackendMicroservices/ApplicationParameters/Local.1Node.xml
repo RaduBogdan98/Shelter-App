@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/ShelterBackendMicroservices" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
+    <Parameter Name="ApplicationGateway_InstanceCount" Value="1" />
+    <Parameter Name="ApplicationGateway_ASPNETCORE_ENVIRONMENT" Value="Development" />
+    <Parameter Name="ApplicationGateway_InstanceCount" Value="1" />
+    <Parameter Name="ApplicationGateway_ASPNETCORE_ENVIRONMENT" Value="Development" />
     <Parameter Name="SystemManagementMicroservice_InstanceCount" Value="1" />
     <Parameter Name="SystemManagementMicroservice_ASPNETCORE_ENVIRONMENT" Value="Development" />
     <Parameter Name="ServiceManagementMicroservice_InstanceCount" Value="1" />

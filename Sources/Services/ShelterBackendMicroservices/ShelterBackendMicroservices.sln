@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.32228.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "ShelterBackendMicroservices", "ShelterBackendMicroservices\ShelterBackendMicroservices.sfproj", "{DB7CEAB1-9F42-41A3-8343-43E4C9545949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManagementMicroservice", "UserManagementMicroservice\UserManagementMicroservice.csproj", "{A825F063-A7BF-4A7A-9AB1-CBBAA912CDDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserManagementMicroservice", "UserManagementMicroservice\UserManagementMicroservice.csproj", "{A825F063-A7BF-4A7A-9AB1-CBBAA912CDDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceManagementMicroservice", "ServiceManagementMicroservice\ServiceManagementMicroservice.csproj", "{96160A96-D8B7-44B4-B5F6-DD0E89F1FF2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceManagementMicroservice", "ServiceManagementMicroservice\ServiceManagementMicroservice.csproj", "{96160A96-D8B7-44B4-B5F6-DD0E89F1FF2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemManagementMicroservice", "SystemManagementMicroservice\SystemManagementMicroservice.csproj", "{C712632F-3274-4D81-A456-DAA439536343}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystemManagementMicroservice", "SystemManagementMicroservice\SystemManagementMicroservice.csproj", "{C712632F-3274-4D81-A456-DAA439536343}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationGateway", "ApplicationGateway\ApplicationGateway.csproj", "{03E4EC91-6B5E-4770-A019-C0444281744B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{C712632F-3274-4D81-A456-DAA439536343}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C712632F-3274-4D81-A456-DAA439536343}.Release|x64.ActiveCfg = Release|Any CPU
 		{C712632F-3274-4D81-A456-DAA439536343}.Release|x64.Build.0 = Release|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Debug|x64.Build.0 = Debug|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Release|x64.ActiveCfg = Release|Any CPU
+		{03E4EC91-6B5E-4770-A019-C0444281744B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,6 +32,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationGateway\ApplicationGateway.csproj">
+      <ServiceLaunchUrl>https://localhost:{ServicePort}/swagger</ServiceLaunchUrl>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceManagementMicroservice\ServiceManagementMicroservice.csproj">
       <ServiceLaunchUrl>https://localhost:{ServicePort}/</ServiceLaunchUrl>
     </ProjectReference>
