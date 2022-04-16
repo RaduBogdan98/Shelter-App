@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import BottomTabNavigator from "./src/navigation/BottomTabNavigator"
+import AppLoading from 'expo-app-loading';
+import useFonts from './src/resources/utils/useFonts';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+  const [fontReady, setFontReady] = useState(false)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const LoadFonts = async () => {
+    await useFonts();
+  };
+
+  if (!fontReady) {
+    return (
+      <AppLoading
+        startAsync={LoadFonts}
+        onFinish={() => setFontReady(true)}
+        onError={() => { }}
+      />
+    );
+  }
+
+
+  return (
+    <BottomTabNavigator />
+  )
+};
