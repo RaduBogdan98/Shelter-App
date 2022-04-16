@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, ImageBackground, View, } from "react-native";
-import NextIcon from "../../assets/icons/next.js";
+
+import { NextIcon } from "../../assets/icons";
 
 const imageSelector = (type) =>
     type === "findHelp"
