@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, ImageBackground, View, } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    ImageBackground,
+    View,
+} from "react-native";
 
 import { NextIcon } from "../../assets/icons";
 
@@ -25,10 +31,13 @@ const textSelector = (type) =>
         </View>
     );
 
-
 const MainCard = (props) => {
     return (
-        <TouchableOpacity style={styles.container} onPress={() => props.onTap && props.onTap()} activeOpacity={0.7}>
+        <TouchableOpacity
+            style={styles.container}
+            onPress={() => props.onTap && props.onTap()}
+            activeOpacity={0.7}
+        >
             <ImageBackground
                 source={imageSelector(props.type)}
                 resizeMode="cover"

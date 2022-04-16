@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
 
 import { AccountAvatarIcon } from "../../assets/icons";
-import { MainCard } from "../components";
+import { MainCard, NewsCard } from "../components";
 import { style } from "../resources/colors";
 
 const HomeScreen = ({ navigation }) => {
@@ -33,20 +33,18 @@ const HomeScreen = ({ navigation }) => {
                     </View>
                     <Text style={styles.title}>Latest News</Text>
                     <View style={styles.mainNewsContainer}>
-                        <ScrollView horizontal>
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
-                            <View style={styles.newsCard} />
+                        <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
                         </ScrollView>
                     </View>
+                    <Text style={styles.title}>How can i help?</Text>
                 </View>
             </View>
-        </SafeAreaView>
+        </SafeAreaView >
     );
 };
 
@@ -61,6 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         paddingTop: 40,
+        paddingRight: 0,
     },
     header: {
         flexDirection: "row",
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 1,
-        // backgroundColor: 'red'
     },
     title: {
         fontSize: 24,
@@ -86,6 +84,7 @@ const styles = StyleSheet.create({
     mainCardContainer: {
         flexDirection: "row",
         justifyContent: "center",
+        paddingRight: 20,
     },
     newsCard: {
         width: 150,
@@ -96,4 +95,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         justifyContent: "center",
     },
+    scrollContainer: {
+        paddingVertical: 20,
+    }
 });
