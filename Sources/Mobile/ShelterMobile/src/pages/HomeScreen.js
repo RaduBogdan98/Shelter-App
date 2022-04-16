@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Text, View, StyleSheet, SafeAreaView, ScrollView } from "react-native";
-import AccountAvatarIcon from "../../assets/icons/account_avatar.js";
+
+import { AccountAvatarIcon } from "../../assets/icons";
+import { MainCard } from "../components";
 import { style } from "../resources/colors";
-import MainCards from "../components/MainCard";
 
 const HomeScreen = ({ navigation }) => {
     return (
@@ -20,12 +21,12 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={styles.body}>
                     <Text style={styles.title}>I Need Help!</Text>
-                    <View style={styles.mainCardsContainer}>
-                        <MainCards
+                    <View style={styles.mainCardContainer}>
+                        <MainCard
                             type={"findHelp"}
                             onTap={() => navigation.navigate("Feed")}
                         />
-                        <MainCards
+                        <MainCard
                             type={"goToMap"}
                             onTap={() => navigation.navigate("Map")}
                         />
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontFamily: "semibold",
     },
-    mainCardsContainer: {
+    mainCardContainer: {
         flexDirection: "row",
         justifyContent: "center",
     },
