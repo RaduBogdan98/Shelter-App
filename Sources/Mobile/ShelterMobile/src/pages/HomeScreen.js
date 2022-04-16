@@ -35,8 +35,8 @@ const HomeScreen = ({ navigation }) => {
                     <View style={styles.mainNewsContainer}>
                         <ScrollView horizontal contentContainerStyle={styles.scrollContainer}>
                             <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
-                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
-                            <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Full of fear and foreboding, meet the refugees who have fled Ukraine for Poland"} />
+                            <NewsCard source={require("../../assets/findHelp.png")} title={"Flight from Kyiv: 'I need to believe I'll come back'"} />
                             <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
                             <NewsCard source={require("../../assets/findHelp.png")} title={"Ukraine has fastest-growing refugee crisis since second world war, says UN"} />
                         </ScrollView>
