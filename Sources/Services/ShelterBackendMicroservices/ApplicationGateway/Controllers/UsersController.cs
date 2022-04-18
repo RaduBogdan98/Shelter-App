@@ -1,35 +1,50 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApplicationGateway.Helpers;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ApplicationGateway.Controllers
 {
-   [Route("[controller]")]
+   [Route("users")]
    [ApiController]
    public class UsersController : ControllerBase
    {
-      [HttpGet]
-      [Route("login")]
-      public string Login()
+      private string BASE_URL = "https://localhost:8629";
+
+      [HttpPost]
+      [Route("resolveRequest/{requestId}/{isAccepted}")]
+      public async Task<HttpResponseMessage> ResolveRequest(int requestId, bool isAccepted)
       {
-         return "User is in";
+         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+      }
+
+      [HttpGet]
+      [Route("login/{email}/{password}")]
+      public async Task<HttpResponseMessage> Login(string email, string password)
+      {
+         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
       [HttpPost]
       [Route("signup")]
-      public string SignUp()
+      public async Task<HttpResponseMessage> SignUp()
       {
-         return "User sign up";
+         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
       [HttpPost]
       [Route("update")]
-      public string Update()
+      public async Task<HttpResponseMessage> Update()
       {
-         return "User is updated";
+         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
    }
 }
