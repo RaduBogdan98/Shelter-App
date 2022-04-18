@@ -19,13 +19,6 @@ namespace ApplicationGateway.Controllers
    {
       private string BASE_URL = "https://localhost:8629";
 
-      [HttpPost]
-      [Route("resolveRequest/{requestId}/{isAccepted}")]
-      public async Task<HttpResponseMessage> ResolveRequest(int requestId, bool isAccepted)
-      {
-         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
-      }
-
       [HttpGet]
       [Route("login/{email}/{password}")]
       public async Task<HttpResponseMessage> Login(string email, string password)

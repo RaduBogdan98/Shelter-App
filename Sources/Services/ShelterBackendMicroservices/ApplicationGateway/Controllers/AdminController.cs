@@ -9,7 +9,7 @@ namespace ApplicationGateway.Controllers
    [ApiController]
    public class AdminController : ControllerBase
    {
-      private string BASE_URL = "https://localhost:8086";
+      private string BASE_URL = "https://localhost:8086/";
 
       [HttpGet]
       [Route("getProviderRequests")]
@@ -22,8 +22,7 @@ namespace ApplicationGateway.Controllers
       [Route("resolveRequest/{requestId}/{isAccepted}")]
       public async Task<HttpResponseMessage> ResolveRequest(int requestId, bool isAccepted)
       {
-         return await Router.Instance.RouteRequest("https://localhost:8091/users/resolveRequest/" + requestId + "/" + isAccepted, Request);
-         //return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+         return await Router.Instance.RouteRequest(BASE_URL + requestId + "/" + isAccepted, Request);
       }
    }
 }
