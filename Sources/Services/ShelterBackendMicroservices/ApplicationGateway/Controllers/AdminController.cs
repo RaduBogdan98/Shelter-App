@@ -13,14 +13,14 @@ namespace ApplicationGateway.Controllers
 
       [HttpGet]
       [Route("getProviderRequests")]
-      public async Task<HttpResponseMessage> GetRequests()
+      public async Task<IActionResult> GetRequests()
       {
-         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+         return await Router.Instance.RouteRequest(BASE_URL, Request);
       }
 
       [HttpPost]
       [Route("resolveRequest/{requestId}/{isAccepted}")]
-      public async Task<HttpResponseMessage> ResolveRequest(int requestId, bool isAccepted)
+      public async Task<IActionResult> ResolveRequest(int requestId, bool isAccepted)
       {
          return await Router.Instance.RouteRequest(BASE_URL + requestId + "/" + isAccepted, Request);
       }

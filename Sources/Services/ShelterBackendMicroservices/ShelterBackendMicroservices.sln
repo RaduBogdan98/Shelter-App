@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceManagementMicroservi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SystemManagementMicroservice", "SystemManagementMicroservice\SystemManagementMicroservice.csproj", "{C712632F-3274-4D81-A456-DAA439536343}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationGateway", "ApplicationGateway\ApplicationGateway.csproj", "{03E4EC91-6B5E-4770-A019-C0444281744B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationGateway", "ApplicationGateway\ApplicationGateway.csproj", "{03E4EC91-6B5E-4770-A019-C0444281744B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

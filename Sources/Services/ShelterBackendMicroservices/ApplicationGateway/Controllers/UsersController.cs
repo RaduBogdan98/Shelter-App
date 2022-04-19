@@ -21,21 +21,21 @@ namespace ApplicationGateway.Controllers
 
       [HttpGet]
       [Route("login/{email}/{password}")]
-      public async Task<HttpResponseMessage> Login(string email, string password)
+      public async Task<IActionResult> Login(string email, string password)
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
       [HttpPost]
       [Route("signup")]
-      public async Task<HttpResponseMessage> SignUp()
+      public async Task<IActionResult> SignUp()
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
       [HttpPost]
       [Route("update")]
-      public async Task<HttpResponseMessage> Update()
+      public async Task<IActionResult> Update()
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }

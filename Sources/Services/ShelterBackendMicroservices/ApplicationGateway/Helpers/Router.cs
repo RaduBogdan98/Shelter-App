@@ -1,25 +1,37 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ApplicationGateway.Helpers
 {
-   public class Router
+   public class Router : ControllerBase
    {
       #region Singleton
-      private static Router instance = null;
+      private static readonly object padlock = new object();
+      private static volatile Router instance = null;
 
-      internal static Router Instance
+      /// <summary>
+      /// Multithreaded handling for the Singleton pattern
+      /// </summary>
+      public static Router Instance
       {
          get
          {
-            if(instance == null)
+            if (instance == null)
             {
-               instance = new Router();
+               lock (padlock)
+               {
+                  if (instance == null)
+                  {
+                     instance = new Router();
+                  }
+               }
             }
 
             return instance;
@@ -36,16 +48,16 @@ namespace ApplicationGateway.Helpers
 
       private HttpClient httpClient;
 
-      internal async Task<HttpResponseMessage> RouteRequest(string url, HttpRequest request)
+      public async Task<IActionResult> RouteRequest(string url, HttpRequest request)
       {
          try
          {
             using (HttpRequestMessage newRequest = new HttpRequestMessage(new HttpMethod(request.Method), url))
             {
-               newRequest.Content = await extractContentFromRequest(request);
+               newRequest.Content = await ExtractContentFromRequest(request);
                using (HttpResponseMessage response = await httpClient.SendAsync(newRequest))
                {
-                  return response;
+                  return await CreateActionResult(response);
                }
             }
          }
@@ -55,7 +67,7 @@ namespace ApplicationGateway.Helpers
          }
       }
 
-      private async Task<HttpContent> extractContentFromRequest(HttpRequest request)
+      private async Task<HttpContent> ExtractContentFromRequest(HttpRequest request)
       {
          StringContent content;
          using (StreamReader reader = new StreamReader(request.Body, Encoding.UTF8))
@@ -64,6 +76,15 @@ namespace ApplicationGateway.Helpers
          }
 
          return content;
+      }
+
+      private async Task<IActionResult> CreateActionResult(HttpResponseMessage response)
+      {
+         ContentResult result = Content(await response.Content.ReadAsStringAsync());
+         result.ContentType = response.Content.Headers.ContentType.ToString();
+         result.StatusCode = (int)response.StatusCode;
+
+         return result;
       }
    }
 }
