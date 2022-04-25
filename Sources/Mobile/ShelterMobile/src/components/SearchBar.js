@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 import { SearchIcon } from "../../assets/icons";
 import { style } from "../resources/colors";
+import { strings } from "../resources/strings";
 
 const SearchBar = (props) => {
 
@@ -18,7 +19,7 @@ const SearchBar = (props) => {
             <TextInput
                 style={styles.input}
                 value={searchText}
-                placeholder="Search"
+                placeholder={strings.search}
                 placeholderTextColor={style.black}
                 onChangeText={(searchText) => onChangeText(searchText)}
                 onSubmitEditing={() => props.onSubmit && props.onSubmit(searchText)}

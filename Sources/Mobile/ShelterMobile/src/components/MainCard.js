@@ -8,6 +8,7 @@ import {
 } from "react-native";
 
 import { NextIcon } from "../../assets/icons";
+import { strings } from "../resources/strings";
 
 const imageSelector = (type) =>
     type === "findHelp"
@@ -17,16 +18,20 @@ const imageSelector = (type) =>
 const textSelector = (type) =>
     type === "findHelp" ? (
         <View>
-            <Text style={styles.title}>Find help</Text>
+            <Text style={styles.title}>
+                {strings.find_help}
+            </Text>
             <Text style={styles.description}>
-                Discover services that can help you.
+                {strings.help_card_text}
             </Text>
         </View>
     ) : (
         <View>
-            <Text style={styles.title}>Go to map</Text>
+            <Text style={styles.title}>
+                {strings.go_to_map}
+            </Text>
             <Text style={styles.description}>
-                See the location of the services provided.
+                {strings.map_card_text}
             </Text>
         </View>
     );

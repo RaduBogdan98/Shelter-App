@@ -8,6 +8,7 @@ import {
     MedicalIcon,
 } from "../../assets/icons";
 import { style } from "../resources/colors";
+import { strings } from '../resources/strings'
 
 const FilterButtons = () => {
     const [stayIsActive, setStayIsActive] = useState(true);
@@ -32,7 +33,7 @@ const FilterButtons = () => {
                         stayIsActive ? styles.colorWhite : { color: style.darkGray },
                     ]}
                 >
-                    Stay
+                    {strings.stay}
                 </Text>
             </TouchableOpacity>
 
@@ -57,7 +58,7 @@ const FilterButtons = () => {
                             : { color: style.secondaryBlue },
                     ]}
                 >
-                    Childcare
+                    {strings.childcare}
                 </Text>
             </TouchableOpacity>
 
@@ -76,7 +77,7 @@ const FilterButtons = () => {
                         foodIsActive ? styles.colorWhite : { color: style.accentOrange },
                     ]}
                 >
-                    Food
+                    {strings.food}
                 </Text>
             </TouchableOpacity>
 
@@ -95,7 +96,7 @@ const FilterButtons = () => {
                         medicalIsActive ? styles.colorWhite : { color: style.accentGreen },
                     ]}
                 >
-                    Medical
+                    {strings.medical}
                 </Text>
             </TouchableOpacity>
         </View>

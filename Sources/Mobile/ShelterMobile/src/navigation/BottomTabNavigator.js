@@ -7,6 +7,7 @@ import MapScreen from '../pages/MapScreen';
 import ProfileScreen from '../pages/ProfileScreen';
 import { HomeIcon, FeedIcon, MapIcon, ProfileIcon } from '../../assets/bottomTabIcons';
 import { style } from '../resources/colors';
+import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,7 +30,7 @@ export default function BottomTabNavigator() {
                         height: 75,
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
-                        marginTop: -10,
+                        paddingTop: Platform.OS === 'ios' ? 10 : 0,
                     }
                 })}
             >
