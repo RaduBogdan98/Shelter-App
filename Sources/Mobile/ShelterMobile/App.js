@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import BottomTabNavigator from "./src/navigation/BottomTabNavigator"
+import AppNavigator from "./src/navigation/AppNavigator"
 import AppLoading from 'expo-app-loading';
 import useFonts from './src/resources/utils/useFonts';
 
@@ -20,8 +20,7 @@ export default function App() {
     );
   }
 
-
   return (
-    <BottomTabNavigator />
+    <AppNavigator />
   )
 };
