@@ -49,10 +49,15 @@ const DATA = [
     },
 ];
 
-const FeedScreen = () => {
+const FeedScreen = ({ navigation }) => {
+
+    const onCardPress = (item) => {
+        navigation.navigate("DetailsScreen", { item })
+    }
 
     const renderItem = ({ item }) => (
         <ItemCard
+            onCardPress={() => onCardPress(item)}
             title={item.title}
             category={item.category}
             image={item.image}
