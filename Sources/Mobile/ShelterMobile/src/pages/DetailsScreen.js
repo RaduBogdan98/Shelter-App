@@ -1,5 +1,13 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Linking } from "react-native";
-import React, { useState } from "react";
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TouchableOpacity,
+    Linking,
+    Alert,
+} from "react-native";
+import React, { useState, useCallback } from "react";
 
 import StatusTag from "../components/StatusTag";
 import { Button } from "../components";
@@ -9,15 +17,22 @@ import { strings } from "../resources/strings";
 
 const DetailsScreen = ({ navigation, route }) => {
     const [details, setDetails] = useState(route.params.item);
+    const url = "tel:" + details.phoneNumber;
 
     const onBackPress = () => navigation.goBack();
     const onOptionsPress = () => {
         console.log("Options pressed!");
     };
 
-    const onButtonPress = () => {
-        Linking.openURL("tel:" + details.phoneNumber)
-    }
+    const onButtonPress = useCallback(async () => {
+        const supported = await Linking.canOpenURL(url);
+
+        if (supported) {
+            await Linking.openURL(url);
+        } else {
+            Alert.alert(`Don't know how to open this URL: ${url}`);
+        }
+    }, [url]);
 
     return (
         <View style={styles.container}>
@@ -41,7 +56,9 @@ const DetailsScreen = ({ navigation, route }) => {
                 resizeMode="cover"
             />
             <View style={styles.title}>
-                <Text style={styles.titleText} numberOfLines={2}>{details.title}</Text>
+                <Text style={styles.titleText} numberOfLines={2}>
+                    {details.title}
+                </Text>
                 <StatusTag category={details.category} />
             </View>
             <View style={styles.textcontainer}>
@@ -99,7 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        paddingTop: 20
+        paddingTop: 20,
     },
     titleText: {
         fontSize: 28,
@@ -111,7 +128,7 @@ const styles = StyleSheet.create({
     },
     description: {
         width: "100%",
-        paddingTop: 20
+        paddingTop: 20,
     },
     sectionText: {
         fontSize: 16,
@@ -125,6 +142,6 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         justifyContent: "flex-end",
-        paddingBottom: 30
-    }
+        paddingBottom: 30,
+    },
 });
