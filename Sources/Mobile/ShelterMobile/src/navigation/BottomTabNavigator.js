@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../pages/HomeScreen';
@@ -7,7 +8,6 @@ import MapScreen from '../pages/MapScreen';
 import ProfileScreen from '../pages/ProfileScreen';
 import { HomeIcon, FeedIcon, MapIcon, ProfileIcon } from '../../assets/bottomTabIcons';
 import { style } from '../resources/colors';
-import { Platform } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 

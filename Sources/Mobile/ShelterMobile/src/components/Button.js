@@ -18,13 +18,13 @@ const Button = (props) => {
 const styles = StyleSheet.create({
     defaultTextStyle: {
         color: style.white,
-        fontSize: 20, //TODO: Move to style
+        fontSize: 20,
         fontFamily: 'medium'
     },
     defaultContainerStyle: {
         backgroundColor: style.primaryBlue,
         borderRadius: 16,
-        height: 50,
+        paddingVertical: 14,
         width: '90%',
         alignItems: 'center',
         justifyContent: 'center',

@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     label: {
-        fontSize: 14,
         paddingLeft: 5,
     },
     colorWhite: {

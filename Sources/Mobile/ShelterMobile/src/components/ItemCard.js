@@ -1,5 +1,7 @@
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
+import StatusTag from "../components/StatusTag";
+import { NextIcon } from "../../assets/icons";
 import { style } from "../resources/colors";
 
 const navigateToDetailsPage = () => {
@@ -8,9 +10,15 @@ const navigateToDetailsPage = () => {
 
 const ItemCard = (props) => {
     return (
-        <TouchableOpacity style={styles.item} onPress={navigateToDetailsPage()}>
+        <TouchableOpacity style={styles.item} onPress={navigateToDetailsPage}>
             <Image source={props.image} style={styles.imageStyle} />
-            <Text style={styles.title}>{props.title}</Text>
+            <View style={styles.info}>
+                <Text style={styles.title} numberOfLines={1}>{props.title}</Text>
+                <View style={styles.actionRow}>
+                    <StatusTag category={props.category} />
+                    <NextIcon />
+                </View>
+            </View>
         </TouchableOpacity>
     );
 };
@@ -20,15 +28,14 @@ export default ItemCard;
 const styles = StyleSheet.create({
     item: {
         height: 215,
-        width: "45%",
+        width: "44%",
         backgroundColor: style.baseGray25,
         margin: 10,
         borderRadius: 16,
         alignItems: 'flex-start',
-        justifyContent: "flex-start",
     },
     title: {
-        fontSize: 18,
+        fontSize: 17,
         fontFamily: 'regular',
     },
     imageStyle: {
@@ -36,4 +43,15 @@ const styles = StyleSheet.create({
         height: "60%",
         borderRadius: 16,
     },
+    info: {
+        flex: 1,
+        width: "100%",
+        padding: 10,
+        justifyContent: 'space-around'
+    },
+    actionRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+    }
 });
