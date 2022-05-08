@@ -4,11 +4,10 @@ import StatusTag from "../components/StatusTag";
 import { NextIcon } from "../../assets/icons";
 import { style } from "../resources/colors";
 
-const navigateToDetailsPage = () => {
-    console.log("Navigating to details page");
-};
-
 const ItemCard = (props) => {
+
+    const navigateToDetailsPage = (item) => props.onCardPress(item);
+
     return (
         <TouchableOpacity style={styles.item} onPress={navigateToDetailsPage}>
             <Image source={props.image} style={styles.imageStyle} />
