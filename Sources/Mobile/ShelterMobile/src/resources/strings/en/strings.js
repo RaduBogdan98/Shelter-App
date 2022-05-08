@@ -23,4 +23,9 @@ export const strings_EN = {
     childcare: 'Childcare',
     food: 'Food',
     medical: 'Medical',
+
+    //DetailsScreen
+    description: 'General description:',
+    posted: 'Posted by:',
+    i_need_this: 'I need this!'
 };
