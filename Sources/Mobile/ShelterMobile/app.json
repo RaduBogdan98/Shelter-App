@@ -25,7 +25,12 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.teamfrost.shelter",
-      "versionCode": 1
+      "versionCode": 1,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBDwKN--nGxTo-3N6Hp8UDJgzfmnH4aYsc"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

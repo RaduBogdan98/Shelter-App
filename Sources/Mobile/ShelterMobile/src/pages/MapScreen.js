@@ -1,9 +1,10 @@
-import { StyleSheet, View, Dimensions } from "react-native";
 import React from "react";
-import MapView from "react-native-maps";
+import { StyleSheet, View, Dimensions } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
 import { SearchBar, FilterButtons } from "../components";
 import { style } from "../resources/colors";
+import { mapStyle } from "../resources/mapStyle";
 
 const MapScreen = () => {
     return (
@@ -21,7 +22,17 @@ const MapScreen = () => {
                     latitudeDelta: 0.0722,
                     longitudeDelta: 0.0321,
                 }}
-            />
+                mapType={"mutedStandard"}
+                customMapStyle={mapStyle}
+            >
+                <Marker coordinate={{ latitude: 45.7532, longitude: 21.2270 }} pinColor={"orange"} />
+                <Marker coordinate={{ latitude: 45.7478, longitude: 21.2174 }} pinColor={"orange"} />
+                <Marker coordinate={{ latitude: 45.7549, longitude: 21.2460 }} pinColor={"blue"} />
+                <Marker coordinate={{ latitude: 45.7535, longitude: 21.2216 }} pinColor={"blue"} />
+                <Marker coordinate={{ latitude: 45.7300, longitude: 21.2220 }} pinColor={"green"} />
+                <Marker coordinate={{ latitude: 45.7445, longitude: 21.2413 }} pinColor={"green"} />
+                <Marker coordinate={{ latitude: 45.7598, longitude: 21.2131 }} pinColor={"indigo"} />
+            </MapView>
         </View>
     );
 };
