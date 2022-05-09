@@ -2,6 +2,8 @@ import { useState } from 'react';
 import AppNavigator from "./src/navigation/AppNavigator"
 import AppLoading from 'expo-app-loading';
 import useFonts from './src/resources/utils/useFonts';
+import Toast from 'react-native-toast-message';
+import toastConfig from './src/resources/toastConfig';
 
 export default function App() {
   const [fontReady, setFontReady] = useState(false)
@@ -21,6 +23,9 @@ export default function App() {
   }
 
   return (
-    <AppNavigator />
+    <>
+      <AppNavigator />
+      <Toast config={toastConfig} />
+    </>
   )
 };

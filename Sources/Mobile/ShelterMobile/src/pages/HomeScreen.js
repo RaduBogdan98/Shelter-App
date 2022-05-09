@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions
 
 import { AccountAvatarIcon, RightArrow } from "../../assets/icons";
 import { MainCard, NewsCard } from "../components";
+import { showToast } from "../resources/utils";
 import { style } from "../resources/colors";
 import { strings } from "../resources/strings";
 
@@ -73,7 +74,7 @@ const HomeScreen = ({ navigation }) => {
                             <Image style={styles.helpImage} source={require("../../assets/homeScreenAssets/volunteerImage.png")} />
                             <Text style={styles.helpText}>{strings.apply_to_be_a_volunteer}</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonPressZone}>
+                        <TouchableOpacity style={styles.buttonPressZone} onPress={() => showToast("success", "This is a temporary placeholder")}>
                             <RightArrow />
                         </TouchableOpacity>
                     </View>

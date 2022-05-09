@@ -8,6 +8,7 @@ import MedicalIcon from "./medicalFilter";
 import RightArrow from "./rightArrow";
 import BackIcon from "./back";
 import EllipsesIcon from "./ellipses";
+import CheckIcon from "./check";
 
 export {
     AccountAvatarIcon,
@@ -20,4 +21,5 @@ export {
     RightArrow,
     BackIcon,
     EllipsesIcon,
+    CheckIcon
 };
