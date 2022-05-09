@@ -22,7 +22,6 @@ const MapScreen = () => {
                     latitudeDelta: 0.0722,
                     longitudeDelta: 0.0321,
                 }}
-                mapType={"mutedStandard"}
                 customMapStyle={mapStyle}
             >
                 <Marker coordinate={{ latitude: 45.7532, longitude: 21.2270 }} pinColor={"orange"} />
