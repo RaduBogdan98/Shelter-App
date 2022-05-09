@@ -22,6 +22,7 @@ export default function BottomTabNavigator() {
                 },
                 tabBarShowLabel: false,
                 headerShown: false,
+                tabBarHideOnKeyboard: true,
                 tabBarStyle: {
                     height: 75,
                     borderTopLeftRadius: 10,
