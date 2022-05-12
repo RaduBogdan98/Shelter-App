@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 
 import { AccountAvatarIcon, RightArrow } from "../../assets/icons";
 import { MainCard, NewsCard } from "../components";
@@ -7,9 +8,13 @@ import { showToast } from "../resources/utils";
 import { style } from "../resources/colors";
 import { strings } from "../resources/strings";
 
-const HomeScreen = ({ navigation }) => {
-    return (
+import { test } from "../store/actions/users/userActions"
 
+const HomeScreen = ({ navigation }) => {
+    const userDetails = useSelector(state => state.users.test)
+    const dispatch = useDispatch();
+
+    return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <AccountAvatarIcon />
@@ -18,6 +23,7 @@ const HomeScreen = ({ navigation }) => {
                     <Text style={styles.headerText}>
                         {strings.welcome_to}<Text style={styles.shelterText}>{strings.shelter}</Text>
                     </Text>
+                    <Text>{userDetails}</Text>
                 </View>
             </View>
 

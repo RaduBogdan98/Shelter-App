@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import AppNavigator from "./src/navigation/AppNavigator"
-import AppLoading from 'expo-app-loading';
-import useFonts from './src/resources/utils/useFonts';
-import Toast from 'react-native-toast-message';
-import toastConfig from './src/resources/toastConfig';
+import { useState } from "react";
+import AppLoading from "expo-app-loading";
+import { Provider } from "react-redux";
+
+import AppNavigator from "./src/navigation/AppNavigator";
+import useFonts from "./src/resources/utils/useFonts";
+import Toast from "react-native-toast-message";
+import toastConfig from "./src/resources/toastConfig";
+import store from "./src/store/configureStore";
 
 export default function App() {
-  const [fontReady, setFontReady] = useState(false)
+  const [fontReady, setFontReady] = useState(false);
 
   const LoadFonts = async () => {
     await useFonts();
@@ -23,9 +26,9 @@ export default function App() {
   }
 
   return (
-    <>
+    <Provider store={store}>
       <AppNavigator />
       <Toast config={toastConfig} />
-    </>
-  )
-};
+    </Provider>
+  );
+}
