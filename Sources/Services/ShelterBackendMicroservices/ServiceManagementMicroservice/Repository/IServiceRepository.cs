@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace ServiceManagementMicroservice.Repository
 {
-   interface IServiceRepository
+   public interface IServiceRepository
    {
-      Task<bool> CreateService(int ownerId, string title, string description, byte[] thumbnail);
-
-      Task<List<Service>> GetServicesForProvider(int providerId);
-
-      Task<bool> SetAvailability(int serviceId, bool newAvailability);
-
+      Task<bool> CreateServiceAsync(Service serviceRequest);
+      Task<IEnumerable<Service>> GetAllServicesAsync();
+      Task<IEnumerable<Service>> GetServicesByOwnerIdAsync(int ownerId);
+      Task<IEnumerable<Service>> GetServicesByUserIdAsync(int ownerId);
+      Task<bool> UpdateServiceAsync(Service serviceUpdateRequest);
       Task<bool> DeleteService(int serviceId);
 
-      Task<List<Service>> GetUsedServicesForUser(int userId);
+      
    }
 }

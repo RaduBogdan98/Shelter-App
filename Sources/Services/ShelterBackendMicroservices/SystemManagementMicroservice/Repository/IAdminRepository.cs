@@ -6,12 +6,12 @@ using SystemManagementMicroservice.Model;
 
 namespace SystemManagementMicroservice.Repository
 {
-   interface IAdminRepository
-   {
-      Task<bool> CreateProviderRequest(int userId, string company, string address, string reason);
+   public interface IAdminRepository
+   { 
+       Task<IEnumerable<ProviderRequest>> GetAllProviderRequestsAsync();
 
-      Task<List<ProviderRequest>> GetProviderRequests();
+      Task<ProviderRequest> GetProviderRequestByIdAsync(int providerRequestId);
 
-      Task<bool> SendRequestResolution(int requestId, bool resolutionValue);
+      Task<bool> DeleteProviderRequestAsync(int providerRequestId);
    }
 }

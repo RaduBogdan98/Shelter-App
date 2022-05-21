@@ -6,14 +6,11 @@ using UserManagementMicroservice.Model;
 
 namespace UserManagementMicroservice.Repository
 {
-   interface IUserRepository
+   public interface IUserRepository
    {
-      Task<bool> CreateUser(string name, string email, string password);
+       Task<bool> RegisterUserAsync(User user);
+       Task<User> AuthenticateUserAsync(string email, string password);
 
-      Task<User> AuthenticateUser(string email, string password);
-
-      Task<bool> AddProviderAttributes(int userId, string address, string company);
-
-      Task<bool> UpdateUserDetails(User user);
+       Task<User> UpdateUserRoleAsync(UserType userRole);
    }
 }

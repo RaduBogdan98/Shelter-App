@@ -16,19 +16,19 @@ namespace SystemManagementMicroservice.Repository
          this.context = context;
       }
 
-      public Task<bool> CreateProviderRequest(int userId, string company, string address, string reason)
+      public Task<IEnumerable<ProviderRequest>> GetAllProviderRequestsAsync()
       {
-         throw new NotImplementedException();
+          throw new NotImplementedException();
       }
 
-      public Task<List<ProviderRequest>> GetProviderRequests()
+      public Task<ProviderRequest> GetProviderRequestByIdAsync(int providerRequestId)
       {
-         throw new NotImplementedException();
+          throw new NotImplementedException();
       }
 
-      public Task<bool> SendRequestResolution(int requestId, bool resolutionValue)
+      public Task<bool> DeleteProviderRequestAsync(int providerRequestId)
       {
-         throw new NotImplementedException();
+          throw new NotImplementedException();
       }
    }
 }

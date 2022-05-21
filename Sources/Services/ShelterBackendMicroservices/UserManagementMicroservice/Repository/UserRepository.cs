@@ -16,23 +16,19 @@ namespace UserManagementMicroservice.Repository
          this.context = context;
       }
 
-      public Task<bool> CreateUser(string name, string email, string password)
+      public Task<bool> RegisterUserAsync(User user)
       {
-         throw new NotImplementedException();
+          throw new NotImplementedException();
       }
 
-      public Task<User> AuthenticateUser(string email, string password)
+      public Task<User> AuthenticateUserAsync(string email, string password)
       {
-         throw new NotImplementedException();
+          throw new NotImplementedException();
       }
 
-      public Task<bool> UpdateUserDetails(User user)
+      public Task<User> UpdateUserRoleAsync(UserType userRole)
       {
-         throw new NotImplementedException();
-      }
-      public Task<bool> AddProviderAttributes(int userId, string address, string company)
-      {
-         throw new NotImplementedException();
+          throw new NotImplementedException();
       }
    }
 }

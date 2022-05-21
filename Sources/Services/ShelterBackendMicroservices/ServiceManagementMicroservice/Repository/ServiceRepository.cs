@@ -16,27 +16,32 @@ namespace ServiceManagementMicroservice.Repository
          this.context = context;
       }
 
-      public Task<bool> CreateService(int ownerId, string title, string description, byte[] thumbnail)
+      public Task<bool> CreateServiceAsync(Service serviceRequest)
       {
          throw new NotImplementedException();
+      }
+
+      public Task<IEnumerable<Service>> GetAllServicesAsync()
+      {
+          throw new NotImplementedException();
+      }
+
+      public Task<IEnumerable<Service>> GetServicesByOwnerIdAsync(int ownerId)
+      {
+          throw new NotImplementedException();
+      }
+
+      public Task<IEnumerable<Service>> GetServicesByUserIdAsync(int ownerId)
+      {
+          throw new NotImplementedException();
+      }
+
+      public Task<bool> UpdateServiceAsync(Service serviceUpdateRequest)
+      {
+          throw new NotImplementedException();
       }
 
       public Task<bool> DeleteService(int serviceId)
-      {
-         throw new NotImplementedException();
-      }
-
-      public Task<List<Service>> GetServicesForProvider(int providerId)
-      {
-         throw new NotImplementedException();
-      }
-
-      public Task<List<Service>> GetUsedServicesForUser(int userId)
-      {
-         throw new NotImplementedException();
-      }
-
-      public Task<bool> SetAvailability(int serviceId, bool newAvailability)
       {
          throw new NotImplementedException();
       }

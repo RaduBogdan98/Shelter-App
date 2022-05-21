@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -6,6 +9,9 @@ using Microsoft.Extensions.Hosting;
 using UserManagementMicroservice.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.OpenApi.Models;
+using UserManagementMicroservice.Domain.Mappers;
+using UserManagementMicroservice.Repository;
 
 namespace UserManagementMicroservice
 {
@@ -28,6 +34,25 @@ namespace UserManagementMicroservice
          {
             options.UseSqlServer(Configuration.GetConnectionString("Default"));
          });
+
+         services.AddSwaggerGen(options =>
+         {
+             options.SwaggerDoc("v1",
+                 new OpenApiInfo
+                 {
+                     Title = "UserManagement API",
+                     Version = "1",
+                     Description = "UserManagement API"
+                 });
+             //include xml comments
+             var xmlCommentFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
+             var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+             options.IncludeXmlComments(xmlCommentsFullPath);
+         });
+
+         services.AddControllers();
+         services.AddScoped<IUserRepository, UserRepository>();
+         services.AddAutoMapper(typeof(UserMapper));
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -5,7 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using ServiceManagementMicroservice.DataAccess;
+using ServiceManagementMicroservice.Domain.Mappers;
+using ServiceManagementMicroservice.Repository;
 
 namespace ServiceManagementMicroservice
 {
@@ -28,6 +34,25 @@ namespace ServiceManagementMicroservice
          {
             options.UseSqlServer(Configuration.GetConnectionString("Default"));
          });
+
+         services.AddSwaggerGen(options =>
+         {
+             options.SwaggerDoc("v1",
+                 new OpenApiInfo
+                 {
+                     Title = "ServiceManagement API",
+                     Version = "1",
+                     Description = "ServiceManagement API"
+                 });
+             //include xml comments
+             var xmlCommentFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
+             var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+             options.IncludeXmlComments(xmlCommentsFullPath);
+         });
+
+         services.AddControllers();
+         services.AddScoped<IServiceRepository, ServiceRepository>();
+         services.AddAutoMapper(typeof(ServiceMapper));
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
