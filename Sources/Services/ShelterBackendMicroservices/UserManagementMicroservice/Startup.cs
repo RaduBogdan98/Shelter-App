@@ -50,7 +50,7 @@ namespace UserManagementMicroservice
              options.IncludeXmlComments(xmlCommentsFullPath);
          });
 
-         services.AddControllers();
+         services.AddControllers(options => options.SuppressAsyncSuffixInActionNames = false);
          services.AddScoped<IUserRepository, UserRepository>();
          services.AddAutoMapper(typeof(UserMapper));
       }

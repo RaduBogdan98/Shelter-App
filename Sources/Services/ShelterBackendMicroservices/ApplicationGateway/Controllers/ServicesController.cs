@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ServiceManagementMicroservice.Domain.Dto;
 
 namespace ApplicationGateway.Controllers
 {
@@ -13,35 +14,35 @@ namespace ApplicationGateway.Controllers
 
       [HttpPost]
       [Route("create")]
-      public async Task<IActionResult> CreateService()
+      public async Task<IActionResult> CreateServiceAsync([FromBody] ServiceDto serviceRequestDto)
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
       [HttpGet]
-      [Route("getServices/{userId}")]
-      public async Task<IActionResult> GetServices(int userId)
+      [Route("getServices")]
+      public async Task<IActionResult> GetAllServicesAsync()
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+      }
+
+      [HttpGet]
+      [Route("getServices/{ownerId}")]
+      public async Task<IActionResult> GetServicesByOwnerIdAsync(int ownerId)
+      {
+          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
       [HttpGet]
       [Route("getUsedServices/{userId}")]
-      public async Task<IActionResult> GetUsedServices(int userId)
+      public async Task<IActionResult> GetServicesByUserIdAsync(int userId)
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
 
-      [HttpPost]
-      [Route("updateService/{serviceId}")]
-      public async Task<IActionResult> UpdateService(int serviceId)
-      {
-         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
-      }
-
-      [HttpGet]
-      [Route("setAvailability/{serviceId}/{isAvailable}")]
-      public async Task<IActionResult> SetAvailability(int serviceId, bool isAvailable)
+      [HttpPut]
+      [Route("updateService")]
+      public async Task<IActionResult> UpdateServiceAsync([FromBody] ServiceDto serviceUpdateRequestDto)
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }

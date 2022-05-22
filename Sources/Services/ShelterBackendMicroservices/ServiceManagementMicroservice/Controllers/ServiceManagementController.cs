@@ -66,10 +66,16 @@ namespace ServiceManagementMicroservice.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("/ownedServices/{ownerId}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ServiceDto>))]
         public async Task<IActionResult> GetServicesByOwnerIdAsync(int ownerId)
         {
             var services = await _serviceManagementRepository.GetServicesByOwnerIdAsync(ownerId);
+            if (services == null)
+            {
+                return BadRequest("Invalid provider Id.");
+            }
+
             var servicesDto = services.Select(service => _serviceMapper.Map<ServiceDto>(service)).ToList();
 
             return Ok(servicesDto);
@@ -80,9 +86,15 @@ namespace ServiceManagementMicroservice.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("/usedServices/{userId}")]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ServiceDto>))]
         public async Task<IActionResult> GetServicesByUserIdAsync(int userId)
         {
             var services = await _serviceManagementRepository.GetServicesByUserIdAsync(userId);
+            if (services == null)
+            {
+                return BadRequest("Invalid user Id.");
+            }
             var servicesDto = services.Select(service => _serviceMapper.Map<ServiceDto>(service)).ToList();
 
             return Ok(servicesDto);
@@ -95,7 +107,7 @@ namespace ServiceManagementMicroservice.Controllers
         /// <returns></returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceDto))]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> UpdateServiceAsync([FromBody] ServiceDto serviceUpdateRequestDto)
         {
             var serviceUpdateRequest = _serviceMapper.Map<Service>(serviceUpdateRequestDto);
@@ -115,10 +127,15 @@ namespace ServiceManagementMicroservice.Controllers
         /// <param name="serviceId">The Id of the service to be deleted</param>
         /// <returns></returns>
         [HttpDelete("{serviceId}")]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> DeleteService(int serviceId)
         {
-            await _serviceManagementRepository.DeleteService(serviceId);
+            var deleted = await _serviceManagementRepository.DeleteService(serviceId);
+            if (!deleted)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError);
+            }
 
             return Ok();
         }

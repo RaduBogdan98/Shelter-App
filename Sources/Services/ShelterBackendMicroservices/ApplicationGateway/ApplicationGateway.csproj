@@ -10,7 +10,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.Kestrel" Version="5.2.1571" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceManagementMicroservice\ServiceManagementMicroservice.csproj" />
+    <ProjectReference Include="..\UserManagementMicroservice\UserManagementMicroservice.csproj" />
   </ItemGroup>
 
 </Project>

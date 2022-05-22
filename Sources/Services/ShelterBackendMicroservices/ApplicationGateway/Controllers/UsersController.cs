@@ -10,6 +10,7 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using UserManagementMicroservice.Domain.Dto;
 
 namespace ApplicationGateway.Controllers
 {
@@ -19,23 +20,16 @@ namespace ApplicationGateway.Controllers
    {
       private string BASE_URL = "https://localhost:8629";
 
+      [HttpPost]
+      [Route("register")]
+      public async Task<IActionResult> RegisterUserAsync([FromBody] UserDto user)
+      {
+          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+      }
+
       [HttpGet]
-      [Route("login/{email}/{password}")]
-      public async Task<IActionResult> Login(string email, string password)
-      {
-         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
-      }
-
-      [HttpPost]
-      [Route("signup")]
-      public async Task<IActionResult> SignUp()
-      {
-         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
-      }
-
-      [HttpPost]
-      [Route("update")]
-      public async Task<IActionResult> Update()
+      [Route("authenticate")]
+      public async Task<IActionResult> AuthenticateUserAsync(string email, string password)
       {
          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
       }
