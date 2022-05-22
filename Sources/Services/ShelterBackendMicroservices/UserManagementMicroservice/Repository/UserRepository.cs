@@ -16,19 +16,44 @@ namespace UserManagementMicroservice.Repository
          this.context = context;
       }
 
-      public Task<bool> RegisterUserAsync(User user)
+      public async Task<bool> RegisterUserAsync(User user)
       {
-          throw new NotImplementedException();
+         int result = 0;
+         try
+         {
+            this.context.Users.Add(user);
+            result = await this.context.SaveChangesAsync();
+         }
+         catch
+         {
+
+         }
+
+         return result > 0;
       }
 
       public Task<User> AuthenticateUserAsync(string email, string password)
       {
-          throw new NotImplementedException();
+         return Task.FromResult(this.context.Users.FirstOrDefault(x => x.Email == email && x.Password == password));
       }
 
-      public Task<User> UpdateUserRoleAsync(UserType userRole)
+      public async Task<User> UpdateUserRoleAsync(int userId, UserType userRole)
       {
-          throw new NotImplementedException();
+         User user = null;
+         try
+         {
+            context.Users.FirstOrDefault(x => x.Id == userId);
+            user.Type = userRole;
+
+            context.Users.Update(user);
+            await this.context.SaveChangesAsync();
+         }
+         catch
+         {
+            user = null;
+         }
+
+         return user;
       }
    }
 }

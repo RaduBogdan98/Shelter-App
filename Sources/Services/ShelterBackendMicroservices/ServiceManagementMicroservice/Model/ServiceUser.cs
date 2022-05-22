@@ -7,9 +7,9 @@ namespace ServiceManagementMicroservice.Model
    public class ServiceUser
    {
       [Required]
-      public int IdUser { get; set; }
+      public int UserId { get; set; }
 
       [Required]
-      public int IdService { get; set; }
+      public int ServiceId { get; set; }
    }
 }

@@ -18,17 +18,29 @@ namespace SystemManagementMicroservice.Repository
 
       public Task<IEnumerable<ProviderRequest>> GetAllProviderRequestsAsync()
       {
-          throw new NotImplementedException();
+         return Task.FromResult(context.ProviderRequests.AsEnumerable());
       }
 
       public Task<ProviderRequest> GetProviderRequestByIdAsync(int providerRequestId)
       {
-          throw new NotImplementedException();
+         return Task.FromResult(context.ProviderRequests.FirstOrDefault(x => x.Id == providerRequestId));
       }
 
-      public Task<bool> DeleteProviderRequestAsync(int providerRequestId)
+      public async Task<bool> DeleteProviderRequestAsync(int providerRequestId)
       {
-          throw new NotImplementedException();
+         var result = 0;
+
+         try
+         {
+            context.Remove(context.ProviderRequests.FirstOrDefault(x => x.Id == providerRequestId));
+            result = await context.SaveChangesAsync();
+         }
+         catch
+         {
+
+         }
+
+         return result > 0;
       }
    }
 }

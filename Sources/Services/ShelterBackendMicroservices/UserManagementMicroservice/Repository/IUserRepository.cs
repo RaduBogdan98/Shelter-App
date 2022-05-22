@@ -11,6 +11,6 @@ namespace UserManagementMicroservice.Repository
        Task<bool> RegisterUserAsync(User user);
        Task<User> AuthenticateUserAsync(string email, string password);
 
-       Task<User> UpdateUserRoleAsync(UserType userRole);
+       Task<User> UpdateUserRoleAsync(int userId, UserType userRole);
    }
 }

@@ -8,7 +8,7 @@ namespace ServiceManagementMicroservice.Model
       public int Id { get; set; }
 
       [Required]
-      public int IdOwner { get; set; }
+      public int OwnerId { get; set; }
 
       [Required]
       public ServiceType ServiceType { get; set; }

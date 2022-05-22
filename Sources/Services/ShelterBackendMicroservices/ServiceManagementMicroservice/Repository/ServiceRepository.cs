@@ -1,6 +1,5 @@
 ﻿using ServiceManagementMicroservice.DataAccess;
 using ServiceManagementMicroservice.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,34 +15,71 @@ namespace ServiceManagementMicroservice.Repository
          this.context = context;
       }
 
-      public Task<bool> CreateServiceAsync(Service serviceRequest)
+      public async Task<bool> CreateServiceAsync(Service serviceRequest)
       {
-         throw new NotImplementedException();
+         int result = 0;
+         try
+         {
+            this.context.Services.Add(serviceRequest);
+            result = await this.context.SaveChangesAsync();
+         }
+         catch
+         {
+
+         }
+
+         return result > 0;
       }
 
       public Task<IEnumerable<Service>> GetAllServicesAsync()
       {
-          throw new NotImplementedException();
+         return Task.FromResult(context.Services.Where(x => x.Available == true).AsEnumerable());
       }
 
       public Task<IEnumerable<Service>> GetServicesByOwnerIdAsync(int ownerId)
       {
-          throw new NotImplementedException();
+         return Task.FromResult(context.Services.Where(x => x.OwnerId == ownerId && x.Available == true).AsEnumerable());
       }
 
-      public Task<IEnumerable<Service>> GetServicesByUserIdAsync(int ownerId)
+      public Task<IEnumerable<Service>> GetServicesByUserIdAsync(int userId)
       {
-          throw new NotImplementedException();
+         List<int> usedServices = context.ServicesUsers.Where(x => x.UserId == userId).Select(x => x.ServiceId).ToList();
+
+         return Task.FromResult(context.Services.Where(x => usedServices.Contains(x.Id)).AsEnumerable());
       }
 
-      public Task<bool> UpdateServiceAsync(Service serviceUpdateRequest)
+      public async Task<bool> UpdateServiceAsync(Service serviceUpdateRequest)
       {
-          throw new NotImplementedException();
+         int result = 0;
+
+         try
+         {
+            context.Services.Update(serviceUpdateRequest);
+            result = await context.SaveChangesAsync();
+         }
+         catch
+         {
+
+         }
+
+         return result > 0;
       }
 
-      public Task<bool> DeleteService(int serviceId)
+      public async Task<bool> DeleteService(int serviceId)
       {
-         throw new NotImplementedException();
+         var result = 0;
+
+         try
+         {
+            context.Remove(context.Services.FirstOrDefault(x => x.Id == serviceId));
+            result = await context.SaveChangesAsync();
+         }
+         catch
+         {
+
+         }
+
+         return result > 0;
       }
    }
 }
