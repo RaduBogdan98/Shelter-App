@@ -41,7 +41,7 @@ namespace ServiceManagementMicroservice
                  new OpenApiInfo
                  {
                      Title = "ServiceManagement API",
-                     Version = "1",
+                     Version = "v1",
                      Description = "ServiceManagement API"
                  });
              //include xml comments
@@ -61,16 +61,15 @@ namespace ServiceManagementMicroservice
          if (env.IsDevelopment())
          {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "ServiceManagement API v1"));
          }
 
          app.UseRouting();
 
          app.UseEndpoints(endpoints =>
          {
-            endpoints.MapGet("/", async context =>
-               {
-                await context.Response.WriteAsync("Hello World!");
-             });
+            endpoints.MapControllers();
          });
       }
    }

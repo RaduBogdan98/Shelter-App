@@ -13,7 +13,7 @@ namespace ApplicationGateway.Helpers
    public class Router : ControllerBase
    {
       #region Singleton
-      private static readonly object padlock = new object();
+      private static readonly object mutex = new object();
       private static volatile Router instance = null;
 
       /// <summary>
@@ -25,7 +25,7 @@ namespace ApplicationGateway.Helpers
          {
             if (instance == null)
             {
-               lock (padlock)
+               lock (mutex)
                {
                   if (instance == null)
                   {

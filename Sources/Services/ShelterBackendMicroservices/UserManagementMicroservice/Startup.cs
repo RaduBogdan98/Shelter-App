@@ -41,13 +41,13 @@ namespace UserManagementMicroservice
                  new OpenApiInfo
                  {
                      Title = "UserManagement API",
-                     Version = "1",
+                     Version = "v1",
                      Description = "UserManagement API"
                  });
-             //include xml comments
-             var xmlCommentFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
-             var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
-             options.IncludeXmlComments(xmlCommentsFullPath);
+            //include xml comments
+            var xmlCommentFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
+            var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+            options.IncludeXmlComments(xmlCommentsFullPath);
          });
 
          services.AddControllers(options => options.SuppressAsyncSuffixInActionNames = false);
@@ -61,16 +61,15 @@ namespace UserManagementMicroservice
          if (env.IsDevelopment())
          {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(/*c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserManagement API v1")*/);
          }
 
          app.UseRouting();
 
          app.UseEndpoints(endpoints =>
          {
-            endpoints.MapGet("/", async context =>
-               {
-                await context.Response.WriteAsync("Hello World!");
-             });
+            endpoints.MapControllers();
          });
       }
    }

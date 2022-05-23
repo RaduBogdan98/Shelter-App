@@ -37,17 +37,17 @@ namespace SystemManagementMicroservice
 
          services.AddSwaggerGen(options =>
          {
-             options.SwaggerDoc("v1",
-                 new OpenApiInfo
-                 {
-                     Title = "SystemManagement API",
-                     Version = "1",
-                     Description = "SystemManagement API"
-                 });
-             //include xml comments
-             var xmlCommentFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
-             var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
-             options.IncludeXmlComments(xmlCommentsFullPath);
+            options.SwaggerDoc("v1",
+                new OpenApiInfo
+                {
+                   Title = "SystemManagement API",
+                   Version = "v1",
+                   Description = "SystemManagement API"
+                });
+            //include xml comments
+            var xmlCommentFile = $"{Assembly.GetEntryAssembly().GetName().Name}.xml";
+            var xmlCommentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+            options.IncludeXmlComments(xmlCommentsFullPath);
          });
 
          services.AddControllers();
@@ -61,16 +61,15 @@ namespace SystemManagementMicroservice
          if (env.IsDevelopment())
          {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SystemManagement API v1"));
          }
 
          app.UseRouting();
 
          app.UseEndpoints(endpoints =>
          {
-            endpoints.MapGet("/", async context =>
-               {
-                await context.Response.WriteAsync("Hello World!");
-             });
+            endpoints.MapControllers();
          });
       }
    }
