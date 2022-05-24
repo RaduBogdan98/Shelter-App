@@ -37,7 +37,7 @@ namespace UserManagementMicroservice
 
          services.AddSwaggerGen(options =>
          {
-             options.SwaggerDoc("v1",
+             options.SwaggerDoc("users",
                  new OpenApiInfo
                  {
                      Title = "UserManagement API",
@@ -62,7 +62,7 @@ namespace UserManagementMicroservice
          {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
-            app.UseSwaggerUI(/*c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "UserManagement API v1")*/);
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/users/swagger.json", "UserManagement API v1"));
          }
 
          app.UseRouting();

@@ -5,31 +5,32 @@ using System.Threading.Tasks;
 
 namespace ApplicationGateway.Controllers
 {
-   [Route("admin")]
+   [Route("Admin")]
    [ApiController]
+   [ApiExplorerSettings(GroupName = "gateway")]
    public class AdminController : ControllerBase
    {
-      private string BASE_URL = "https://localhost:8086/";
+      private string BASE_URL = "https://localhost:8086/Admin/";
 
       [HttpGet]
-      [Route("getProviderRequests")]
+      [Route("GetProviderRequests")]
       public async Task<IActionResult> GetAllProviderRequestsAsync()
       {
-         return await Router.Instance.RouteRequest(BASE_URL, Request);
+         return await Router.Instance.RouteRequest(BASE_URL + "GetRequests", Request);
       }
 
       [HttpPost]
-      [Route("acceptRequest/{providerRequestId}")]
+      [Route("AcceptRequest/{providerRequestId}")]
       public async Task<IActionResult> AcceptProviderRequestAsync(int providerRequestId)
       {
-         return await Router.Instance.RouteRequest(BASE_URL + providerRequestId, Request);
+         return await Router.Instance.RouteRequest(BASE_URL + $"AcceptRequest/{providerRequestId}", Request);
       }
 
       [HttpDelete]
-      [Route("deleteRequest/{providerRequestId}")]
+      [Route("DeleteRequest/{providerRequestId}")]
       public async Task<IActionResult> DeleteProviderRequestAsync(int providerRequestId)
       {
-          return await Router.Instance.RouteRequest(BASE_URL + providerRequestId, Request);
+         return await Router.Instance.RouteRequest(BASE_URL + $"DeleteRequest/{providerRequestId}", Request);
       }
-    }
+   }
 }

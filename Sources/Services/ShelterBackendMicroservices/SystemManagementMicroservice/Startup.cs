@@ -37,7 +37,7 @@ namespace SystemManagementMicroservice
 
          services.AddSwaggerGen(options =>
          {
-            options.SwaggerDoc("v1",
+            options.SwaggerDoc("admin",
                 new OpenApiInfo
                 {
                    Title = "SystemManagement API",
@@ -62,7 +62,7 @@ namespace SystemManagementMicroservice
          {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SystemManagement API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/admin/swagger.json", "SystemManagement API v1"));
          }
 
          app.UseRouting();

@@ -14,24 +14,25 @@ using UserManagementMicroservice.Domain.Dto;
 
 namespace ApplicationGateway.Controllers
 {
-   [Route("users")]
+   [Route("Users")]
    [ApiController]
+   [ApiExplorerSettings(GroupName = "gateway")]
    public class UsersController : ControllerBase
    {
-      private string BASE_URL = "https://localhost:8629";
+      private string BASE_URL = "https://localhost:8629/Users/";
 
       [HttpPost]
-      [Route("register")]
+      [Route("Register")]
       public async Task<IActionResult> RegisterUserAsync([FromBody] UserDto user)
       {
-          return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+          return await Router.Instance.RouteRequest(BASE_URL + "Register", Request);
       }
 
       [HttpGet]
-      [Route("authenticate")]
+      [Route("Authenticate/{email}/{password}")]
       public async Task<IActionResult> AuthenticateUserAsync(string email, string password)
       {
-         return await Router.Instance.RouteRequest(BASE_URL + "", Request);
+         return await Router.Instance.RouteRequest(BASE_URL + $"Authenticate/{email}/{password}", Request);
       }
    }
 }

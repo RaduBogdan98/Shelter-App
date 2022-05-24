@@ -12,78 +12,79 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace SystemManagementMicroservice.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class SystemManagementController : ControllerBase
-    {
-        private readonly IAdminRepository _adminRepository;
-        private readonly IMapper _systemMapper;
+   [Route("Admin")]
+   [ApiController]
+   [ApiExplorerSettings(GroupName = "admin")]
+   public class SystemManagementController : ControllerBase
+   {
+      private readonly IAdminRepository _adminRepository;
+      private readonly IMapper _systemMapper;
 
-        public SystemManagementController(IAdminRepository adminRepository, IMapper systemMapper)
-        {
-            _adminRepository = adminRepository;
-            _systemMapper = systemMapper;
-        }
-        
-        /// <summary>
-        /// Gets all the requests for becoming a provider.
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ProviderRequestDto>))]
-        public async Task<IActionResult> GetAllProviderRequestsAsync()
-        {
-            var providerRequests = await _adminRepository.GetAllProviderRequestsAsync();
-            var providerRequestsDto = providerRequests.Select(request => _systemMapper.Map<ProviderRequestDto>(request)).ToList();
+      public SystemManagementController(IAdminRepository adminRepository, IMapper systemMapper)
+      {
+         _adminRepository = adminRepository;
+         _systemMapper = systemMapper;
+      }
 
-            return Ok(providerRequestsDto);
-        }
+      /// <summary>
+      /// Gets all the requests for becoming a provider.
+      /// </summary>
+      /// <returns></returns>
+      [HttpGet("GetRequests")]
+      [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<ProviderRequestDto>))]
+      public async Task<IActionResult> GetAllProviderRequestsAsync()
+      {
+         var providerRequests = await _adminRepository.GetAllProviderRequestsAsync();
+         var providerRequestsDto = providerRequests.Select(request => _systemMapper.Map<ProviderRequestDto>(request)).ToList();
 
-        /// <summary>
-        /// Accept a user's request to become provider.
-        /// </summary>
-        /// <param name="providerRequestId">The id of the user request</param>
-        /// <returns></returns>
-        [HttpPut]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> AcceptProviderRequestAsync(int providerRequestId)
-        {
-            var providerRequest = await _adminRepository.GetProviderRequestByIdAsync(providerRequestId);
-            if ( providerRequest == null )
-            {
-                return NotFound();
-            }
+         return Ok(providerRequestsDto);
+      }
 
-            var userId = providerRequest.OwnerId;
-            //give provider roles for userId
+      /// <summary>
+      /// Accept a user's request to become provider.
+      /// </summary>
+      /// <param name="providerRequestId">The id of the user request</param>
+      /// <returns></returns>
+      [HttpPut("AcceptRequest/{providerRequestId}")]
+      [ProducesResponseType(StatusCodes.Status404NotFound)]
+      [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      [ProducesResponseType(StatusCodes.Status200OK)]
+      public async Task<IActionResult> AcceptProviderRequestAsync(int providerRequestId)
+      {
+         var providerRequest = await _adminRepository.GetProviderRequestByIdAsync(providerRequestId);
+         if (providerRequest == null)
+         {
+            return NotFound();
+         }
 
-            var deleted = await _adminRepository.DeleteProviderRequestAsync(providerRequestId);
+         var userId = providerRequest.OwnerId;
+         //give provider roles for userId
 
-            if ( !deleted )
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-            }
-            return Ok();
-        }
+         var deleted = await _adminRepository.DeleteProviderRequestAsync(providerRequestId);
 
-        /// <summary>
-        /// Delete a user's request to become a provider.
-        /// </summary>
-        /// <param name="providerRequestId"></param>
-        /// <returns></returns>
-        [HttpDelete]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IActionResult> DeleteProviderRequestAsync(int providerRequestId)
-        {
-            var deleted = await _adminRepository.DeleteProviderRequestAsync(providerRequestId);
-            if (!deleted)
-            {
-                return StatusCode((int)HttpStatusCode.InternalServerError);
-            }
-            return Ok();
-        }
-    }
+         if (!deleted)
+         {
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+         }
+         return Ok();
+      }
+
+      /// <summary>
+      /// Delete a user's request to become a provider.
+      /// </summary>
+      /// <param name="providerRequestId"></param>
+      /// <returns></returns>
+      [HttpDelete("DeleteRequest/{providerRequestId}")]
+      [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      [ProducesResponseType(StatusCodes.Status200OK)]
+      public async Task<IActionResult> DeleteProviderRequestAsync(int providerRequestId)
+      {
+         var deleted = await _adminRepository.DeleteProviderRequestAsync(providerRequestId);
+         if (!deleted)
+         {
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+         }
+         return Ok();
+      }
+   }
 }
