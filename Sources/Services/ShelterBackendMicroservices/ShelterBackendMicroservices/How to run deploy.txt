@@ -1,1 +1,0 @@
-. Scripts\Deploy-FabricApplication.ps1 -ApplicationPackagePath 'pkg\Release' -PublishProfileFile "PublishProfiles\Local.5Node.xml" -OverwriteBehavior "Always"
