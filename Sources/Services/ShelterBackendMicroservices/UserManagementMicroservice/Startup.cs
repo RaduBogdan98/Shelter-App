@@ -17,6 +17,7 @@ namespace UserManagementMicroservice
 {
    public class Startup
    {
+      private readonly string CONNECTION_STRING = "Server=(LocalDb)\\SheltServ;Initial Catalog=UserDb;";
       public Startup(IConfiguration configuration)
       {
          Configuration = configuration;
@@ -32,7 +33,7 @@ namespace UserManagementMicroservice
 
          services.AddDbContext<UserContext>(options =>
          {
-            options.UseSqlServer(Configuration.GetConnectionString("Default"));
+            options.UseSqlServer(CONNECTION_STRING);
          });
 
          services.AddSwaggerGen(options =>

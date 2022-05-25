@@ -30,6 +30,6 @@ namespace UserManagementMicroservice.Model
 
       public UserType Type { get; set; }
 
-      public byte[] ProfilePicture { get; set; }
+      public string ProfilePicture { get; set; }
    }
 }

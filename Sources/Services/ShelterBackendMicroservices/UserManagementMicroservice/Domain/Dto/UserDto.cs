@@ -16,6 +16,6 @@ namespace UserManagementMicroservice.Domain.Dto
         public string Company { get; set; }
         public string Address { get; set; }
         public UserType Type { get; set; }
-        public byte[] ProfilePicture { get; set; }
+        public string ProfilePicture { get; set; }
     }
 }
