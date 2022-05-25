@@ -21,7 +21,7 @@ namespace ServiceManagementMicroservice.Model
       [MaxLength(2000)]
       public string ServiceDescription { get; set; }
 
-      public byte[] ServiceThumbnail { get; set; }
+      public string ServiceThumbnail { get; set; }
 
       [Required]
       public DateTime Date { get; set; }

@@ -1,5 +1,6 @@
 ﻿using ServiceManagementMicroservice.DataAccess;
 using ServiceManagementMicroservice.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace ServiceManagementMicroservice.Repository
             this.context.Services.Add(serviceRequest);
             result = await this.context.SaveChangesAsync();
          }
-         catch
+         catch (Exception e)
          {
 
          }

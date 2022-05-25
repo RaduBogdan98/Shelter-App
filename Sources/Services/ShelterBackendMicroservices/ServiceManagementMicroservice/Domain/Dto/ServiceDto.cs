@@ -13,6 +13,6 @@ namespace ServiceManagementMicroservice.Domain.Dto
         public ServiceType ServiceType { get; set; }
         public string ServiceTitle { get; set; }
         public string ServiceDescription { get; set; }
-        public byte[] ServiceThumbnail { get; set; }
+        public string ServiceThumbnail { get; set; }
     }
 }

@@ -17,6 +17,8 @@ namespace ServiceManagementMicroservice
 {
    public class Startup
    {
+      private readonly string CONNECTION_STRING = "Server=(LocalDb)\\SheltServ;Initial Catalog=ServicesDb;Integrated Security=SSPI;Connection Timeout=30;";
+
       public Startup(IConfiguration configuration)
       {
          Configuration = configuration;
@@ -32,7 +34,7 @@ namespace ServiceManagementMicroservice
 
          services.AddDbContext<ServiceContext>(options =>
          {
-            options.UseSqlServer(Configuration.GetConnectionString("Default"));
+            options.UseSqlServer(CONNECTION_STRING);
          });
 
          services.AddSwaggerGen(options =>
