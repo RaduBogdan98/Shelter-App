@@ -17,6 +17,8 @@ namespace SystemManagementMicroservice
 {
    public class Startup
    {
+      private readonly string CONNECTION_STRING = "Server=tcp:shelterserv.database.windows.net,1433;Initial Catalog=AdminDb;Persist Security Info=False;User ID=shelteradmin;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
       public Startup(IConfiguration configuration)
       {
          Configuration = configuration;
@@ -32,7 +34,7 @@ namespace SystemManagementMicroservice
 
          services.AddDbContext<ProviderRequestContext>(options =>
          {
-            options.UseSqlServer(Configuration.GetConnectionString("Default"));
+            options.UseSqlServer(CONNECTION_STRING);
          });
 
          services.AddSwaggerGen(options =>
