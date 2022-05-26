@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SystemManagementMicroservice.DataAccess;
 using SystemManagementMicroservice.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SystemManagementMicroservice.Repository
 {
@@ -16,14 +16,14 @@ namespace SystemManagementMicroservice.Repository
          this.context = context;
       }
 
-      public Task<IEnumerable<ProviderRequest>> GetAllProviderRequestsAsync()
+      public async Task<IEnumerable<ProviderRequest>> GetAllProviderRequestsAsync()
       {
-         return Task.FromResult(context.ProviderRequests.AsEnumerable());
+         return await context.ProviderRequests.ToListAsync();
       }
 
-      public Task<ProviderRequest> GetProviderRequestByIdAsync(int providerRequestId)
+      public async Task<ProviderRequest> GetProviderRequestByIdAsync(int providerRequestId)
       {
-         return Task.FromResult(context.ProviderRequests.FirstOrDefault(x => x.Id == providerRequestId));
+         return await context.ProviderRequests.FirstOrDefaultAsync(x => x.Id == providerRequestId);
       }
 
       public async Task<bool> DeleteProviderRequestAsync(int providerRequestId)

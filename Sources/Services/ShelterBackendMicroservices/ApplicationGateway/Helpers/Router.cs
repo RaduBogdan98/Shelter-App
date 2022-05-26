@@ -4,7 +4,6 @@ using System;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,13 +47,13 @@ namespace ApplicationGateway.Helpers
 
       private HttpClient httpClient;
 
-      public async Task<IActionResult> RouteRequest(string url, HttpRequest request)
+      public async Task<IActionResult> RouteRequest(string url, HttpRequest request, string requestBody = "")
       {
          try
          {
             using (HttpRequestMessage newRequest = new HttpRequestMessage(new HttpMethod(request.Method), url))
             {
-               newRequest.Content = await ExtractContentFromRequest(request);
+               newRequest.Content = await ExtractContentFromRequest(request, requestBody);
                using (HttpResponseMessage response = await httpClient.SendAsync(newRequest))
                {
                   return await CreateActionResult(response);
@@ -67,12 +66,12 @@ namespace ApplicationGateway.Helpers
          }
       }
 
-      private async Task<HttpContent> ExtractContentFromRequest(HttpRequest request)
+      private async Task<HttpContent> ExtractContentFromRequest(HttpRequest request, string requestBody)
       {
          StringContent content;
          using (StreamReader reader = new StreamReader(request.Body, Encoding.UTF8))
          {
-            content = new StringContent(await reader.ReadToEndAsync(), Encoding.UTF8, request.ContentType);
+            content = new StringContent(await reader.ReadToEndAsync() + requestBody, Encoding.UTF8, request.ContentType);
          }
 
          return content;
@@ -81,7 +80,7 @@ namespace ApplicationGateway.Helpers
       private async Task<IActionResult> CreateActionResult(HttpResponseMessage response)
       {
          ContentResult result = Content(await response.Content.ReadAsStringAsync());
-         result.ContentType = response.Content.Headers.ContentType.ToString();
+         result.ContentType = response.Content.Headers.ContentType?.ToString();
          result.StatusCode = (int)response.StatusCode;
 
          return result;

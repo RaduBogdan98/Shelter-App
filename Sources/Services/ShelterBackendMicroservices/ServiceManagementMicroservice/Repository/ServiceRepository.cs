@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ServiceManagementMicroservice.Repository
 {
@@ -21,6 +22,7 @@ namespace ServiceManagementMicroservice.Repository
          int result = 0;
          try
          {
+            serviceRequest.Date = DateTime.Now;
             this.context.Services.Add(serviceRequest);
             result = await this.context.SaveChangesAsync();
          }
@@ -32,21 +34,21 @@ namespace ServiceManagementMicroservice.Repository
          return result > 0;
       }
 
-      public Task<IEnumerable<Service>> GetAllServicesAsync()
+      public async Task<IEnumerable<Service>> GetAllServicesAsync()
       {
-         return Task.FromResult(context.Services.Where(x => x.Available == true).AsEnumerable());
+         return await context.Services.Where(x => x.Available == true).ToListAsync();
       }
 
-      public Task<IEnumerable<Service>> GetServicesByOwnerIdAsync(int ownerId)
+      public async Task<IEnumerable<Service>> GetServicesByOwnerIdAsync(int ownerId)
       {
-         return Task.FromResult(context.Services.Where(x => x.OwnerId == ownerId && x.Available == true).AsEnumerable());
+         return await context.Services.Where(x => x.OwnerId == ownerId && x.Available == true).ToListAsync();
       }
 
-      public Task<IEnumerable<Service>> GetServicesByUserIdAsync(int userId)
+      public async Task<IEnumerable<Service>> GetServicesByUserIdAsync(int userId)
       {
          List<int> usedServices = context.ServicesUsers.Where(x => x.UserId == userId).Select(x => x.ServiceId).ToList();
 
-         return Task.FromResult(context.Services.Where(x => usedServices.Contains(x.Id)).AsEnumerable());
+         return await context.Services.Where(x => usedServices.Contains(x.Id)).ToListAsync();
       }
 
       public async Task<bool> UpdateServiceAsync(Service serviceUpdateRequest)

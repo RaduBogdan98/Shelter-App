@@ -1,12 +1,12 @@
 ﻿using ApplicationGateway.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
 using System.Threading.Tasks;
 using ServiceManagementMicroservice.Domain.Dto;
+using Newtonsoft.Json;
 
 namespace ApplicationGateway.Controllers
 {
-   [Route("Services")]
+   [Route("Gateway/Services")]
    [ApiController]
    [ApiExplorerSettings(GroupName = "gateway")]
    public class ServicesController : ControllerBase
@@ -17,7 +17,7 @@ namespace ApplicationGateway.Controllers
       [Route("Create")]
       public async Task<IActionResult> CreateServiceAsync([FromBody] ServiceDto serviceRequestDto)
       {
-         return await Router.Instance.RouteRequest(BASE_URL + "Create", Request);
+         return await Router.Instance.RouteRequest(BASE_URL + "Create", Request, JsonConvert.SerializeObject(serviceRequestDto));
       }
 
       [HttpGet]
@@ -45,7 +45,7 @@ namespace ApplicationGateway.Controllers
       [Route("UpdateService")]
       public async Task<IActionResult> UpdateServiceAsync([FromBody] ServiceDto serviceUpdateRequestDto)
       {
-         return await Router.Instance.RouteRequest(BASE_URL + "UpdateService", Request);
+         return await Router.Instance.RouteRequest(BASE_URL + "UpdateService", Request, JsonConvert.SerializeObject(serviceUpdateRequestDto));
       }
 
       [HttpDelete]

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using UserManagementMicroservice.DataAccess;
 using UserManagementMicroservice.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace UserManagementMicroservice.Repository
 {
@@ -32,9 +31,9 @@ namespace UserManagementMicroservice.Repository
          return result > 0;
       }
 
-      public Task<User> AuthenticateUserAsync(string email, string password)
+      public async Task<User> AuthenticateUserAsync(string email, string password)
       {
-         return Task.FromResult(this.context.Users.FirstOrDefault(x => x.Email == email && x.Password == password));
+         return await this.context.Users.FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
       }
 
       public async Task<User> UpdateUserRoleAsync(int userId, UserType userRole)

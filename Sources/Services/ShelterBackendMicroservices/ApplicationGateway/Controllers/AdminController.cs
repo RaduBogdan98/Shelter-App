@@ -1,11 +1,10 @@
 ﻿using ApplicationGateway.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ApplicationGateway.Controllers
 {
-   [Route("Admin")]
+   [Route("Gateway/Admin")]
    [ApiController]
    [ApiExplorerSettings(GroupName = "gateway")]
    public class AdminController : ControllerBase
