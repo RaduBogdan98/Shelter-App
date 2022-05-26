@@ -17,7 +17,7 @@ namespace UserManagementMicroservice
 {
    public class Startup
    {
-      private readonly string CONNECTION_STRING = "Server=(LocalDb)\\SheltServ;Initial Catalog=UserDb;";
+      private readonly string CONNECTION_STRING = "Server=tcp:shelterserv.database.windows.net,1433;Initial Catalog=UsersDb;Persist Security Info=False;User ID=shelteradmin;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
       public Startup(IConfiguration configuration)
       {
          Configuration = configuration;
