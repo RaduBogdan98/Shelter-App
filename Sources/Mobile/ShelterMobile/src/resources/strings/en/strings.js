@@ -56,5 +56,7 @@ export const strings_EN = {
     or_connect_with: "or connect with",
     login_google: "Login with Google",
 
-
+    //BecomeProviderScreen
+    submit: 'Submit',
+    agreement: 'By becoming a provider, you agree to our Terms & Conditions and Privacy Policy.',
 };
