@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image, Dimensions } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-import { AccountAvatarIcon, RightArrow } from "../../assets/icons";
+import { AccountAvatarIcon, RightArrowIcon } from "../../assets/icons";
 import { MainCard, NewsCard } from "../components";
 import { showToast } from "../resources/utils";
 import { style } from "../resources/colors";
@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
                             <Text style={styles.helpText}>{strings.become_a_provider}</Text>
                         </View>
                         <TouchableOpacity style={styles.buttonPressZone}>
-                            <RightArrow />
+                            <RightArrowIcon />
                         </TouchableOpacity>
                     </View>
 
@@ -71,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
                             <Text style={styles.helpText}>{strings.donate_to_redcross}</Text>
                         </View>
                         <TouchableOpacity style={styles.buttonPressZone}>
-                            <RightArrow />
+                            <RightArrowIcon />
                         </TouchableOpacity>
                     </View>
 
@@ -81,7 +81,7 @@ const HomeScreen = ({ navigation }) => {
                             <Text style={styles.helpText}>{strings.apply_to_be_a_volunteer}</Text>
                         </View>
                         <TouchableOpacity style={styles.buttonPressZone} onPress={() => showToast("success", "This is a temporary placeholder")}>
-                            <RightArrow />
+                            <RightArrowIcon />
                         </TouchableOpacity>
                     </View>
                 </View>
