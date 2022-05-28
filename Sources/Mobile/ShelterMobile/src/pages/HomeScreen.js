@@ -14,6 +14,8 @@ const HomeScreen = ({ navigation }) => {
     const userDetails = useSelector(state => state.users.test)
     const dispatch = useDispatch();
 
+    const handleBecomeProviderPress = () => navigation.navigate("BecomeProviderScreen");
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -27,7 +29,7 @@ const HomeScreen = ({ navigation }) => {
                 </View>
             </View>
 
-            <View >
+            <View>
 
                 <Text style={styles.title}>{strings.i_need_help}</Text>
                 <View style={styles.mainCardContainer}>
@@ -55,35 +57,30 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={styles.title}>{strings.how_can_i_help}</Text>
                 <View style={styles.helpContainer}>
 
-                    <View style={styles.helpRow}>
+
+                    <TouchableOpacity style={styles.helpRow} onPress={handleBecomeProviderPress}>
                         <View style={styles.helpRow}>
                             <Image style={styles.helpImage} source={require("../../assets/homeScreenAssets/providerImage.png")} />
                             <Text style={styles.helpText}>{strings.become_a_provider}</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonPressZone}>
-                            <RightArrowIcon />
-                        </TouchableOpacity>
-                    </View>
+                        <RightArrowIcon />
+                    </TouchableOpacity>
 
-                    <View style={styles.helpRow}>
+                    <TouchableOpacity style={styles.helpRow}>
                         <View style={styles.helpRow}>
                             <Image style={styles.helpImage} source={require("../../assets/homeScreenAssets/redcrossImage.png")} />
                             <Text style={styles.helpText}>{strings.donate_to_redcross}</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonPressZone}>
-                            <RightArrowIcon />
-                        </TouchableOpacity>
-                    </View>
+                        <RightArrowIcon />
+                    </TouchableOpacity>
 
-                    <View style={styles.helpRow}>
+                    <TouchableOpacity style={styles.helpRow} onPress={() => showToast("success", "This is a temporary placeholder")}>
                         <View style={styles.helpRow}>
                             <Image style={styles.helpImage} source={require("../../assets/homeScreenAssets/volunteerImage.png")} />
                             <Text style={styles.helpText}>{strings.apply_to_be_a_volunteer}</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonPressZone} onPress={() => showToast("success", "This is a temporary placeholder")}>
-                            <RightArrowIcon />
-                        </TouchableOpacity>
-                    </View>
+                        <RightArrowIcon />
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -142,7 +139,9 @@ const styles = StyleSheet.create({
     helpRow: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        paddingVertical: 2,
+        paddingRight: 7
     },
     helpContainer: {
         marginTop: 10,
