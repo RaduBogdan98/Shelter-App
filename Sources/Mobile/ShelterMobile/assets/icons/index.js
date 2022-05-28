@@ -15,6 +15,11 @@ import CircleRemove from "./circleRemove";
 import GroupIcon from "./group";
 import DangerIcon from "./danger";
 import LogoutIcon from "./logout";
+import EmailIcon from "./email";
+import PasswordIcon from "./password";
+import EyeOpenIcon from "./eyeOpen";
+import EyeCloseIcon from "./eyeClose";
+import GoogleIcon from "./google";
 
 export {
     AccountAvatarIcon,
@@ -33,5 +38,10 @@ export {
     CircleRemove,
     GroupIcon,
     DangerIcon,
-    LogoutIcon
+    LogoutIcon,
+    EmailIcon,
+    PasswordIcon,
+    EyeOpenIcon,
+    EyeCloseIcon,
+    GoogleIcon
 };

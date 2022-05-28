@@ -46,5 +46,15 @@ export const strings_EN = {
     privacy_policy: 'Privacy policy',
     terms_and_conditions: 'Terms and conditions',
 
+    //LoginScreen
+    login: 'Login',
+    email: 'Email',
+    password: 'Password',
+    forgot_password: 'Forgot password?',
+    dont_have_an_account: 'Don\'t have an account?',
+    sign_up: 'Sign up',
+    or_connect_with: "or connect with",
+    login_google: "Login with Google",
+
 
 };
