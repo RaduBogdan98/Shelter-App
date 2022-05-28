@@ -34,10 +34,7 @@ const SettingsScreen = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity
-                    style={[styles.icon, styles.iconLeft]}
-                    onPress={onBackPress}
-                >
+                <TouchableOpacity onPress={onBackPress}                >
                     <BackIcon />
                 </TouchableOpacity>
             </View>
@@ -145,7 +142,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginVertical: 10,
+        paddingVertical: 10,
     },
     mainText: {
         fontSize: 18,
