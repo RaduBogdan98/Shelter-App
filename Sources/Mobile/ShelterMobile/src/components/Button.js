@@ -9,6 +9,7 @@ const Button = (props) => {
             onPress={props.onPress}
             style={{ ...styles.defaultContainerStyle, ...props.containerStyle }}
         >
+            {props.children}
             <Text style={{ ...styles.defaultTextStyle, ...props.textStyle }}>
                 {props.text}
             </Text>
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'row'
     }
 })
 

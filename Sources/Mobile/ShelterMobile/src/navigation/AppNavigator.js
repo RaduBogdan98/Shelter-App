@@ -32,7 +32,7 @@ const AuthStack = () => {
 export default function AppNavigator() {
     return (
         <NavigationContainer>
-            {true ? <AppStack /> : <AuthStack />}
+            {false ? <AppStack /> : <AuthStack />}
         </NavigationContainer>
     );
 }
