@@ -73,11 +73,11 @@ export default LoginScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
         paddingTop: 30,
     },
     keyboardAware: {
         flex: 1,
+        padding: 20,
         alignItems: "center",
         width: '100%',
     },
