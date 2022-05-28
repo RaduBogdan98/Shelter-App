@@ -7,6 +7,7 @@ import LoginScreen from "./LoginScreen";
 import RegisterScreen from "./RegisterScreen";
 import ForgotPasswordScreen from "./ForgotPasswordScreen";
 import SettingsScreen from "./SettingsScreen";
+import BecomeProviderScreen from "./BecomeProviderScreen";
 
 export {
     HomeScreen,
@@ -18,4 +19,5 @@ export {
     RegisterScreen,
     ForgotPasswordScreen,
     SettingsScreen,
+    BecomeProviderScreen
 };
