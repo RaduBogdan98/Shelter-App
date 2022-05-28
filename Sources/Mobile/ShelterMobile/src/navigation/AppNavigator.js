@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
 
-import { DetailsScreen, LoginScreen, RegisterScreen, ForgotPasswordScreen, SettingsScreen } from '../pages';
+import { DetailsScreen, LoginScreen, RegisterScreen, ForgotPasswordScreen, SettingsScreen, BecomeProviderScreen } from '../pages';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +14,7 @@ const AppStack = () => {
             <Stack.Screen name="Main" component={BottomTabNavigator} />
             <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
             <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+            <Stack.Screen name="BecomeProviderScreen" component={BecomeProviderScreen} />
         </Stack.Navigator>
     );
 }
@@ -31,7 +32,7 @@ const AuthStack = () => {
 export default function AppNavigator() {
     return (
         <NavigationContainer>
-            {false ? <AppStack /> : <AuthStack />}
+            {true ? <AppStack /> : <AuthStack />}
         </NavigationContainer>
     );
 }
