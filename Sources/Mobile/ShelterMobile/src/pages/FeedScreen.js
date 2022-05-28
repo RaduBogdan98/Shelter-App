@@ -4,26 +4,28 @@ import { Text, View, StyleSheet, FlatList } from "react-native";
 import { SearchBar, FilterButtons, ItemCard } from "../components";
 import { style } from "../resources/colors";
 
-const DATA = [
+export const DATA = [
     {
         id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
         author: "John Smith",
         phoneNumber: "0101010101",
-        date: "3h ago",
+        date: "used on 09/03/2022",
         title: "Free lunch",
         category: "Food",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/Lunch.png"),
+        isConfirmed: true,
     },
     {
         id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
         author: "John Smith",
         phoneNumber: "0101010101",
-        date: "3h ago",
+        date: "used on 11/03/2022",
         title: "Free daycare for 3",
         category: "Childcare",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/findHelp.png"),
+        isConfirmed: false,
     },
     {
         id: "58694a0f-3da1-471f-bd96-145571e29d72",
@@ -34,6 +36,7 @@ const DATA = [
         category: "Childcare",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/goToMap.png"),
+        isConfirmed: false,
     },
     {
         id: "59694a0f-3da1-471f-bd96-145571e2943",
@@ -44,6 +47,7 @@ const DATA = [
         category: "Stay",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/findHelp.png"),
+        isConfirmed: false,
     },
     {
         id: "59694a0f-3da1-471f-bd96-145571e14134",
@@ -54,6 +58,7 @@ const DATA = [
         category: "Medical",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/findHelp.png"),
+        isConfirmed: true,
     },
     {
         id: "59694421421141f-bd96-14557bbnur1e29d72",
@@ -64,6 +69,7 @@ const DATA = [
         category: "Food",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/goToMap.png"),
+        isConfirmed: true,
     },
     {
         id: "59694a0f-3da1-471f-bd9ghjh6-145571e29dsa72",
@@ -74,6 +80,7 @@ const DATA = [
         category: "Stay",
         description: "Lorem ipsum dolor sit amet, consectetur adi piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         image: require("../../assets/goToMap.png"),
+        isConfirmed: false,
     },
 ];
 

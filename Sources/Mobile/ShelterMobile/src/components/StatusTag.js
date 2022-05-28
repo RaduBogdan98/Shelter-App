@@ -18,6 +18,8 @@ const getIcon = (category) => {
             return <FoodIcon />;
         case "Medical":
             return <MedicalIcon />;
+        case "Provider":
+            return null;
     }
 };
 
@@ -31,6 +33,8 @@ const getBackgroundColor = (category) => {
             return style.accentOrange;
         case "Medical":
             return style.accentGreen;
+        case "Provider":
+            return style.primaryBlue;
     }
 };
 
@@ -46,13 +50,13 @@ const TagStatus = (props) => {
             backgroundColor: getBackgroundColor(props.category),
         },
         label: {
-            paddingLeft: 5,
+            paddingLeft: props.category === "Provider" ? 0 : 5,
             color: style.white,
         },
     });
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, props.style]}>
             {getIcon(props.category)}
             <Text style={styles.label}>{props.category}</Text>
         </View>

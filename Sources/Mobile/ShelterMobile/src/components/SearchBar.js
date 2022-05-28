@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         color: style.black,
+        fontFamily: "regular",
     },
     icon: {
         padding: 8

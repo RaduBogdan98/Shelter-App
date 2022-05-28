@@ -9,6 +9,9 @@ import RightArrow from "./rightArrow";
 import BackIcon from "./back";
 import EllipsesIcon from "./ellipses";
 import CheckIcon from "./check";
+import SettingsIcon from "./settings";
+import CircleCheck from "./circleCheck";
+import CircleRemove from "./circleRemove";
 
 export {
     AccountAvatarIcon,
@@ -21,5 +24,8 @@ export {
     RightArrow,
     BackIcon,
     EllipsesIcon,
-    CheckIcon
+    CheckIcon,
+    SettingsIcon,
+    CircleCheck,
+    CircleRemove,
 };

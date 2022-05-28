@@ -39,5 +39,6 @@ const styles = StyleSheet.create({
     titleStyle: {
         padding: 6,
         fontSize: 11,
+        fontFamily: "light",
     }
 });

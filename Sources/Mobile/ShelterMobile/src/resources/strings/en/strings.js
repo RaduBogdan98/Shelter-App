@@ -27,5 +27,24 @@ export const strings_EN = {
     //DetailsScreen
     description: 'General description:',
     posted: 'Posted by:',
-    i_need_this: 'I need this!'
+    i_need_this: 'I need this!',
+
+    //ProfileScreen
+    services: 'Services',
+
+    //SettingsScreen
+    account_settings: 'Account settings',
+    edit_profile_picture: 'Edit profile picture',
+    change_name: 'Change name',
+    change_password: 'Change password',
+    push_notifications: 'Push notifications',
+    dark_mode: 'Dark mode',
+    delete_account: 'Delete account',
+    logout: 'Logout',
+    more: 'More',
+    about_app: 'About app',
+    privacy_policy: 'Privacy policy',
+    terms_and_conditions: 'Terms and conditions',
+
+
 };
