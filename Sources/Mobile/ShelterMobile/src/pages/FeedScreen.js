@@ -103,7 +103,7 @@ const FeedScreen = ({ navigation }) => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <SearchBar onSubmit={(searchText) => console.log(searchText)} />
-                <FilterButtons />
+                <FilterButtons active={true} />
             </View>
             <FlatList
                 data={DATA}

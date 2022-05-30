@@ -22,6 +22,10 @@ import EyeCloseIcon from "./eyeClose";
 import GoogleIcon from "./google";
 import FaceIcon from "./face";
 import PhoneIcon from "./phone";
+import AddressIcon from "./address";
+import HelpIcon from "./help";
+import WorkIcon from "./work";
+
 
 export {
     AccountAvatarIcon,
@@ -48,4 +52,7 @@ export {
     GoogleIcon,
     FaceIcon,
     PhoneIcon,
+    AddressIcon,
+    HelpIcon,
+    WorkIcon
 };

@@ -66,4 +66,7 @@ export const strings_EN = {
     //BecomeProviderScreen
     submit: 'Submit',
     agreement: 'By becoming a provider, you agree to our Terms & Conditions and Privacy Policy.',
+    address: "Address",
+    company: "Company/organization (optional)",
+    motivation: "Why do you want to become a provider?",
 };

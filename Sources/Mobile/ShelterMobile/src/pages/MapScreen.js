@@ -11,7 +11,7 @@ const MapScreen = () => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <SearchBar onSubmit={(searchText) => console.log(searchText)} />
-                <FilterButtons />
+                <FilterButtons active={true} />
             </View>
             <MapView
                 provider="google"

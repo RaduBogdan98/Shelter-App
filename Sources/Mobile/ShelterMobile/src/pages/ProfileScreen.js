@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TouchableOpacity,
+    FlatList,
+} from "react-native";
 import { Button, StatusTag } from "../components";
 import { strings } from "../resources/strings";
 import { style } from "../resources/colors";
@@ -12,10 +19,9 @@ const mockUser = {
     email: "john.doe@gmail.com",
     phone: "123456789",
     address: "123 Main St, New York, NY 10001",
-}
+};
 
 const ProfileScreen = ({ navigation }) => {
-
     const [isProvider, setIsProvider] = useState(true);
 
     const navigateToSettings = () => navigation.navigate("SettingsScreen");
@@ -24,13 +30,28 @@ const ProfileScreen = ({ navigation }) => {
         <View style={styles.container}>
             <View style={styles.headerArrange}>
                 <View style={styles.userInfoArrange}>
-                    <Image source={require("../../assets/mockImages/avatar.png")} style={styles.avatar} />
-                    <View style={{ flex: 1, marginHorizontal: 10, justifyContent: 'center' }}>
-                        <Text style={styles.username} numberOfLines={1}>{mockUser.name}</Text>
-                        {isProvider && <StatusTag category={"Provider"} style={styles.providerStatusArrange} />}
+                    <Image
+                        source={require("../../assets/mockImages/avatar.png")}
+                        style={styles.avatar}
+                    />
+                    <View
+                        style={{ flex: 1, marginHorizontal: 10, justifyContent: "center" }}
+                    >
+                        <Text style={styles.username} numberOfLines={1}>
+                            {mockUser.name}
+                        </Text>
+                        {isProvider && (
+                            <StatusTag
+                                category={"Provider"}
+                                style={styles.providerStatusArrange}
+                            />
+                        )}
                     </View>
                 </View>
-                <TouchableOpacity style={styles.touchableOpacityRight} onPress={navigateToSettings}>
+                <TouchableOpacity
+                    style={styles.touchableOpacityRight}
+                    onPress={navigateToSettings}
+                >
                     <SettingsIcon />
                 </TouchableOpacity>
             </View>
@@ -51,7 +72,12 @@ const ProfileScreen = ({ navigation }) => {
                     />
                 )}
             />
-            <Button text={strings.become_a_provider} />
+            {isProvider ? null : (
+                <Button
+                    text={strings.become_a_provider}
+                    onPress={() => navigation.navigate("BecomeProviderScreen")}
+                />
+            )}
         </View>
     );
 };
@@ -61,7 +87,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: '100%',
+        width: "100%",
         backgroundColor: style.white,
         alignItems: "flex-start",
         justifyContent: "flex-start",
@@ -91,7 +117,7 @@ const styles = StyleSheet.create({
     },
     touchableOpacityRight: {
         padding: 12,
-        paddingRight: 0
+        paddingRight: 0,
     },
     providerStatusArrange: {
         alignSelf: "flex-start",
@@ -104,10 +130,10 @@ const styles = StyleSheet.create({
     },
     flatList: {
         flex: 1,
-        width: '100%',
+        width: "100%",
         marginVertical: 10,
     },
     list: {
         // backgroundColor: 'red'
-    }
+    },
 });

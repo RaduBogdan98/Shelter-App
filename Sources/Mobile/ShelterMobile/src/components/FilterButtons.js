@@ -10,11 +10,11 @@ import {
 import { style } from "../resources/colors";
 import { strings } from '../resources/strings'
 
-const FilterButtons = () => {
-    const [stayIsActive, setStayIsActive] = useState(true);
-    const [childcareIsActive, setChildcareIsActive] = useState(true);
-    const [foodIsActive, setFoodIsActive] = useState(true);
-    const [medicalIsActive, setMedicalIsActive] = useState(true);
+const FilterButtons = (props) => {
+    const [stayIsActive, setStayIsActive] = useState(props.active);
+    const [childcareIsActive, setChildcareIsActive] = useState(props.active);
+    const [foodIsActive, setFoodIsActive] = useState(props.active);
+    const [medicalIsActive, setMedicalIsActive] = useState(props.active);
 
     return (
         <View style={styles.container}>
