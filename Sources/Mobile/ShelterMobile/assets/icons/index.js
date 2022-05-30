@@ -20,6 +20,8 @@ import PasswordIcon from "./password";
 import EyeOpenIcon from "./eyeOpen";
 import EyeCloseIcon from "./eyeClose";
 import GoogleIcon from "./google";
+import FaceIcon from "./face";
+import PhoneIcon from "./phone";
 
 export {
     AccountAvatarIcon,
@@ -43,5 +45,7 @@ export {
     PasswordIcon,
     EyeOpenIcon,
     EyeCloseIcon,
-    GoogleIcon
+    GoogleIcon,
+    FaceIcon,
+    PhoneIcon,
 };

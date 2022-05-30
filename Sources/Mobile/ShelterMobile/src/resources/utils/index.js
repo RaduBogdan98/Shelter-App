@@ -1,3 +1,4 @@
 import { showToast } from "./toastHelpers";
+import { isValidEmail } from "./generalHelpers";
 
-export { showToast };
+export { showToast, isValidEmail };

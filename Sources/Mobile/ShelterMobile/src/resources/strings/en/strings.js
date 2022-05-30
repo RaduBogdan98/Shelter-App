@@ -56,6 +56,13 @@ export const strings_EN = {
     or_connect_with: "or connect with",
     login_google: "Login with Google",
 
+    //RegisterScreen
+    register: 'Register',
+    full_name: 'Full name',
+    phone_number: 'Phone number',
+    TC: "By signing up, you agree to our Terms & Conditions and Privacy Policy.",
+    already_have_an_account: 'Already have an account?',
+
     //BecomeProviderScreen
     submit: 'Submit',
     agreement: 'By becoming a provider, you agree to our Terms & Conditions and Privacy Policy.',

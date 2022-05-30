@@ -1,5 +1,5 @@
-import * as React from "react"
-import Svg, { Path, G } from "react-native-svg"
+import * as React from "react";
+import Svg, { Path, G } from "react-native-svg";
 
 const LoginImage = (props) => (
     <Svg
@@ -398,6 +398,6 @@ const LoginImage = (props) => (
             fill="#2E353A"
         />
     </Svg>
-)
+);
 
-export default LoginImage
+export default LoginImage;

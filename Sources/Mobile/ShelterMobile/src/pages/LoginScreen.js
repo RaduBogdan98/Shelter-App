@@ -5,7 +5,6 @@ import {
     View,
     SafeAreaView,
     TextInput,
-    Alert,
     TouchableOpacity,
 } from "react-native";
 import { Button } from "../components";
@@ -20,12 +19,9 @@ import {
 } from "../../assets/icons";
 import { style } from "../resources/colors";
 import { strings } from "../resources/strings";
+import { isValidEmail, showToast } from "../resources/utils";
 
 const LoginScreen = ({ navigation }) => {
-    const isValidEmail = (email) => {
-        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        return reg.test(email);
-    };
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -35,7 +31,7 @@ const LoginScreen = ({ navigation }) => {
         console.log(email, password);
         if (isValidEmail(email)) console.log("Login");
         else {
-            Alert.alert("Invalid Email");
+            showToast("error", "Invalid Email");
         }
     };
 
@@ -171,7 +167,6 @@ const styles = StyleSheet.create({
         backgroundColor: style.darkGray,
         width: "30%",
     },
-    textNoAccount: {},
     redirect: {
         flexDirection: "row",
         alignItems: "center",
