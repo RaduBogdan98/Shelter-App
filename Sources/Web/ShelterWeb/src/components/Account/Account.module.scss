@@ -1,0 +1,234 @@
+/* ----- Login ----- */
+.Account {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 20% 70% 10%;
+  grid-template-areas:
+    "illustration logo"
+    "illustration form"
+    "footer footer";
+  //border: 1px solid red;
+  width: 100%;
+}
+
+.Illustration {
+  grid-area: illustration;
+  border: 2px solid blue;
+}
+
+.IllustrationImage {
+  //width: 20rem;
+}
+
+.Logo {
+  grid-area: logo;
+  padding-top: 2rem;
+}
+
+.AppLogo {
+  width: 7rem;
+}
+
+.AppName {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.Form {
+  grid-area: form;
+  padding: 2.5rem;
+  border: 2px solid yellow;
+}
+
+.FormHeader {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.MailField {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.MailFieldIcon {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.MailFieldInput {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+}
+
+.UsernameFiled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.UsernameFieldInput {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+}
+
+.UsernameFieldIcon {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.NameFiled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  border: 1px solid red;
+}
+
+.NameFieldInput {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+}
+
+.NameFieldIcon {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.MobileFiled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.MobileFieldInput {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+}
+
+.MobileFieldIcon {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.PasswordField {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.PasswordFieldIcon {
+  width: 20px;
+  margin-right: 0.5rem;
+}
+
+.PasswordFieldInput {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  width: 100%;
+}
+
+.ShowHidePasswordButton {
+  position: absolute;
+  right: 2.65rem;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: white;
+  margin-bottom: 0.2rem;
+  height: 1.6rem;
+}
+
+.ShowHidePasswordButton:hover {
+  background-color: rgb(209, 206, 206);
+}
+.ShowHidePasswordIcon {
+  //height: 1rem;
+}
+
+.ShowHidePasswordIcon:hover {
+  //filter: invert(100%);
+}
+
+.AdditionalText{
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.64px;
+    text-align: center;
+    text-align: right;
+}
+
+.AdditionalText1 {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17.64px;
+    color:rgb(74, 125, 203);
+    text-align: left;
+}
+
+.SubmitButton {
+    font-family: "Outfit";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25.2px;
+    color: white;
+    background-color:rgb(74, 125, 203);
+    border: none;
+    border-radius: 25px;
+    width: 100%;
+    height: 50px;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.AlternativeLoginMethodDiv {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+
+.StylingLine {
+    width: 25%;
+}
+
+.g-signin2 {
+    width: 300;
+    height: 100px;
+    border: 1px solid red;
+}
+
+.Footer {
+  border: 2px solid orange;
+}
