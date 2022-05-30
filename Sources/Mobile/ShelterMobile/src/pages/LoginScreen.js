@@ -78,8 +78,7 @@ const LoginScreen = ({ navigation }) => {
                     </View>
                     <Text style={styles.forgotPass}>{strings.forgot_password}</Text>
                 </View>
-                <View style={{ flex: 1 }} />
-                <View style={styles.buttonArrange}>
+                <View style={{ ...styles.buttonArrange, marginTop: 30 }}>
                     <Button text={strings.login} onPress={onLoginPressed} />
                 </View>
                 <View
@@ -121,8 +120,8 @@ const styles = StyleSheet.create({
         backgroundColor: style.white,
     },
     keyboardAware: {
-        flex: 1,
         padding: 20,
+        paddingTop: 10,
         alignItems: "center",
     },
     title: {

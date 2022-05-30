@@ -87,7 +87,6 @@ const RegisterScreen = ({ navigation }) => {
                         />
                     </View>
                 </View>
-                <View style={{ flex: 1 }} />
                 <Text style={styles.TC}>{strings.TC}</Text>
                 <View style={styles.buttonArrange}>
                     <Button text={strings.register} onPress={onRegisterPressed} />
@@ -110,8 +109,8 @@ const styles = StyleSheet.create({
         backgroundColor: style.white,
     },
     keyboardAware: {
-        flex: 1,
         padding: 20,
+        paddingTop: 10,
         alignItems: "center",
     },
     title: {
@@ -143,6 +142,7 @@ const styles = StyleSheet.create({
     },
     TC: {
         fontFamily: "light",
+        marginTop: "5%",
     },
     buttonArrange: {
         marginTop: 15,
