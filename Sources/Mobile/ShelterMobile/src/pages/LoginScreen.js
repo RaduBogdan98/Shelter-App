@@ -33,7 +33,6 @@ const LoginScreen = ({ navigation }) => {
     const [securePassword, setSecurePassword] = useState(false);
 
     const onLoginPressed = () => {
-        console.log(email, password);
         if (isValidEmail(email)) {
             dispatch(login(email, password))
         }

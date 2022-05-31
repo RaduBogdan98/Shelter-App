@@ -8,10 +8,8 @@ import { showToast } from "../resources/utils";
 import { style } from "../resources/colors";
 import { strings } from "../resources/strings";
 
-import { test } from "../store/actions/users/userActions"
-
 const HomeScreen = ({ navigation }) => {
-    const userDetails = useSelector(state => state.users.test)
+    const userDetails = useSelector(state => state.users.user)
     const dispatch = useDispatch();
 
     const handleBecomeProviderPress = () => navigation.navigate("BecomeProviderScreen");
@@ -21,11 +19,10 @@ const HomeScreen = ({ navigation }) => {
             <View style={styles.header}>
                 <AccountAvatarIcon />
                 <View style={{ paddingLeft: 10 }}>
-                    <Text style={styles.headerText}>{strings.hello_user}</Text>
+                    <Text style={styles.headerText}>{strings.hello_user}, {userDetails.name}!</Text>
                     <Text style={styles.headerText}>
                         {strings.welcome_to}<Text style={styles.shelterText}>{strings.shelter}</Text>
                     </Text>
-                    <Text>{userDetails}</Text>
                 </View>
             </View>
 

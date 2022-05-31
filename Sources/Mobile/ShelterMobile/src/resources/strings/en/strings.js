@@ -4,7 +4,7 @@ export const strings_EN = {
     shelter: 'Shelter',
 
     //HomeScreen
-    hello_user: 'Hello, User!',
+    hello_user: 'Hello',
     welcome_to: 'Welcome to ',
     i_need_help: 'I need help!',
     find_help: 'Find help',

@@ -1,3 +1,5 @@
+import RNFetchBlob from "rn-fetch-blob";
+
 import { showToast } from "../../../resources/utils";
 import {
     CREATE_USER,
@@ -7,51 +9,13 @@ import {
     GET_REQUEST_RESOLUTION,
     GET_USED_SERVICES,
     IS_LOADING,
-    TEST,
 } from "./userActionTypes";
 
 const onError = (error) => {
     showToast("error", error.message);
 };
 
-export const test = (data) => {
-    return async (dispatch) => {
-        dispatch({
-            type: TEST,
-            payload: data,
-        });
-    };
-};
-
-export const login = (email, password) => {
-    return async (dispatch) => {
-        const onSuccess = (success) => {
-            dispatch({
-                type: LOGIN,
-                payload: data,
-            });
-            return success;
-        };
-        try {
-            const URL = `https://192.168.1.222:8091/Gateway/Services/GetAllServices`;
-            console.log("🚀 ~ file: userActions.js ~ line 37 ~ return ~ URL", URL);
-            const success = await fetch(URL);
-            console.log(
-                "🚀 ~ file: userActions.js ~ line 37 ~ return ~ success",
-                success
-            );
-            return onSuccess(success);
-        } catch (error) {
-            console.log(
-                "🚀 ~ file: userActions.js ~ line 42 ~ return ~ error",
-                error
-            );
-            return onError(error);
-        }
-    };
-};
-
-export const register = () => {
+export const register = (_name, _email, _password, _phone) => {
     return async (dispatch) => {
         const onSuccess = (success) => {
             dispatch({
@@ -61,8 +25,99 @@ export const register = () => {
             return success;
         };
         try {
-            const success = await fetch(`${URL}/user/register`);
-            return onSuccess(success);
+            const URL = "https://localhost:8091/Gateway/Users/Register";
+            const success = await RNFetchBlob.config({
+                trusty: true,
+            }).fetch(
+                "POST",
+                URL,
+                {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                JSON.stringify({
+                    name: _name,
+                    email: _email,
+                    password: _password,
+                    phoneNumber: _phone,
+                    company: "",
+                    address: "",
+                    type: 0,
+                    profilePicture: "",
+                })
+            );
+
+            const data = JSON.parse(success.data);
+            return onSuccess(data);
+        } catch (error) {
+            return onError(error);
+        }
+    };
+};
+
+export const login = (_email, _password) => {
+    return async (dispatch) => {
+        const onSuccess = (data) => {
+            dispatch({
+                type: LOGIN,
+                payload: data,
+            });
+            return data;
+        };
+        try {
+            const URL = `https://192.168.1.222:8091/Gateway/Users/Authenticate/${_email}/${_password}`;
+            const success = await RNFetchBlob.config({
+                trusty: true,
+            }).fetch(
+                "GET",
+                URL,
+                {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                });
+
+            const data = JSON.parse(success.data);
+            return onSuccess(data);
+        } catch (error) {
+            return onError(error);
+        }
+    };
+};
+
+export const updateUser = (_name, _email, _password, _phone, _company, _address) => {
+    return async (dispatch) => {
+        const onSuccess = (success) => {
+            dispatch({
+                type: UPDATE_USER,
+                payload: data,
+            });
+            return success;
+        };
+        try {
+            const URL = "https://localhost:8091/Gateway/Users/Update";
+            const success = await RNFetchBlob.config({
+                trusty: true,
+            }).fetch(
+                "PUT",
+                URL,
+                {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                JSON.stringify({
+                    name: _name,
+                    email: _email,
+                    password: _password,
+                    phoneNumber: _phone,
+                    company: _company,
+                    address: _address,
+                    type: 0,
+                    profilePicture: "",
+                })
+            );
+
+            const data = JSON.parse(success.data);
+            return onSuccess(data);
         } catch (error) {
             return onError(error);
         }

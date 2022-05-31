@@ -32,12 +32,11 @@ const AuthStack = () => {
 
 export default function AppNavigator() {
 
-    const userDetails = useSelector(state => state.user)
-    console.log("🚀 ~ file: AppNavigator.js ~ line 36 ~ AppNavigator ~ userDetails", userDetails)
+    const userDetails = useSelector(state => state.users)
 
     return (
         <NavigationContainer>
-            {userDetails != undefined ? <AppStack /> : <AuthStack />}
+            {userDetails.user ? <AppStack /> : <AuthStack />}
         </NavigationContainer>
     );
 }

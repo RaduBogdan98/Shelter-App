@@ -5,13 +5,11 @@ import {
     UPDATE_USER_DETAILS,
     GET_REQUEST_RESOLUTION,
     GET_USED_SERVICES,
-    IS_LOADING,
-    TEST
+    IS_LOADING
 } from "../actions/users/userActionTypes";
 
 const initialState = {
     user: undefined,
-    test: "Hey it's working!",
     isLoading: false
 };
 
@@ -29,12 +27,6 @@ const userReducer = (state = initialState, action) => {
                 user: action.payload,
             };
             break;
-        case TEST:
-            return {
-                ...state,
-                test: action.payload,
-            };
-            break;
         case ADD_PROVIDER_ATTRIBUTE:
             return {
                 ...state,
@@ -43,6 +35,7 @@ const userReducer = (state = initialState, action) => {
         case UPDATE_USER_DETAILS:
             return {
                 ...state,
+                user: action.payload,
             };
             break;
         case GET_REQUEST_RESOLUTION:
