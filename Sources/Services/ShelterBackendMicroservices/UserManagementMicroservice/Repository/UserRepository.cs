@@ -2,6 +2,7 @@
 using UserManagementMicroservice.DataAccess;
 using UserManagementMicroservice.Model;
 using Microsoft.EntityFrameworkCore;
+using ApplicationGateway.Helpers;
 
 namespace UserManagementMicroservice.Repository
 {
@@ -19,6 +20,10 @@ namespace UserManagementMicroservice.Repository
          int result = 0;
          try
          {
+            GeoPoint userGeoLocation = await GeoDecoder.GetAdressLatLong(user.Address);
+            user.Latitude = userGeoLocation.Latitude;
+            user.Longitude = userGeoLocation.Longitude;
+
             this.context.Users.Add(user);
             result = await this.context.SaveChangesAsync();
          }
@@ -40,6 +45,10 @@ namespace UserManagementMicroservice.Repository
          int result = 0;
          try
          {
+            GeoPoint userGeoLocation = await GeoDecoder.GetAdressLatLong(user.Address);
+            user.Latitude = userGeoLocation.Latitude;
+            user.Longitude = userGeoLocation.Longitude;
+
             context.Users.Update(user);
             result = await this.context.SaveChangesAsync();
          }

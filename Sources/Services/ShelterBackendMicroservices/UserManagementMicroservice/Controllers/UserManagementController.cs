@@ -53,7 +53,7 @@ namespace UserManagementMicroservice.Controllers
       [HttpGet("Authenticate/{email}/{password}")]
       [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))]
       [ProducesResponseType(StatusCodes.Status404NotFound)]
-      [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+      [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SpecializedUserDto))]
       public async Task<IActionResult> AuthenticateUserAsync(string email, string password)
       {
          if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
@@ -67,7 +67,7 @@ namespace UserManagementMicroservice.Controllers
             return NotFound();
          }
 
-         var userDto = _userMapper.Map<UserDto>(user);
+         var userDto = _userMapper.Map<SpecializedUserDto>(user);
 
          return Ok(userDto);
       }

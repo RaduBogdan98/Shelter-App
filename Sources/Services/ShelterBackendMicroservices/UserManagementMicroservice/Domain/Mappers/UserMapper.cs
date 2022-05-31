@@ -9,6 +9,7 @@ namespace UserManagementMicroservice.Domain.Mappers
         public UserMapper()
         {
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, SpecializedUserDto>().ReverseMap();
         }
     }
 }
