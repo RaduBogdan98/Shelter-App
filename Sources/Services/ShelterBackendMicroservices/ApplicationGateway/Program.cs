@@ -2,11 +2,10 @@ using Microsoft.ServiceFabric.Services.Runtime;
 using System;
 using System.Diagnostics;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace ApplicationGateway
 {
-    internal static class Program
+   internal static class Program
     {
         /// <summary>
         /// This is the entry point of the service host process.

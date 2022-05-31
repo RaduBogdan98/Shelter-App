@@ -51,10 +51,29 @@ namespace ServiceManagementMicroservice.Repository
          return await context.Services.Where(x => usedServices.Contains(x.Id)).ToListAsync();
       }
 
+      public async Task<bool> UseServiceAsync(int userId, int serviceId)
+      {
+         ServiceUser serviceUser = new ServiceUser();
+         serviceUser.UserId = userId;
+         serviceUser.ServiceId = serviceId;
+
+         int result = 0;
+         try
+         {
+            this.context.ServicesUsers.Add(serviceUser);
+            result = await this.context.SaveChangesAsync();
+         }
+         catch (Exception e)
+         {
+
+         }
+
+         return result > 0;
+      }
+
       public async Task<bool> UpdateServiceAsync(Service serviceUpdateRequest)
       {
          int result = 0;
-
          try
          {
             context.Services.Update(serviceUpdateRequest);

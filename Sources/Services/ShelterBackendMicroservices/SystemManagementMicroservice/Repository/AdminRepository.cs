@@ -29,10 +29,25 @@ namespace SystemManagementMicroservice.Repository
       public async Task<bool> DeleteProviderRequestAsync(int providerRequestId)
       {
          var result = 0;
-
          try
          {
-            context.Remove(context.ProviderRequests.FirstOrDefault(x => x.Id == providerRequestId));
+            context.ProviderRequests.Remove(context.ProviderRequests.FirstOrDefault(x => x.Id == providerRequestId));
+            result = await context.SaveChangesAsync();
+         }
+         catch
+         {
+
+         }
+
+         return result > 0;
+      }
+
+      public async Task<bool> CreateProviderRequestAsync(ProviderRequest providerRequest)
+      {
+         var result = 0;
+         try
+         {
+            context.ProviderRequests.Add(providerRequest);
             result = await context.SaveChangesAsync();
          }
          catch

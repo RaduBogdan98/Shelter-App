@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceManagementMicroservice\ServiceManagementMicroservice.csproj" />
+    <ProjectReference Include="..\SystemManagementMicroservice\SystemManagementMicroservice.csproj" />
     <ProjectReference Include="..\UserManagementMicroservice\UserManagementMicroservice.csproj" />
   </ItemGroup>
 

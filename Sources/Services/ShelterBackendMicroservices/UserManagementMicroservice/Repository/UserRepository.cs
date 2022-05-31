@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UserManagementMicroservice.DataAccess;
 using UserManagementMicroservice.Model;
 using Microsoft.EntityFrameworkCore;
@@ -36,23 +35,25 @@ namespace UserManagementMicroservice.Repository
          return await this.context.Users.FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
       }
 
-      public async Task<User> UpdateUserRoleAsync(int userId, UserType userRole)
+      public async Task<bool> UpdateUserAsync(User user)
       {
-         User user = null;
+         int result = 0;
          try
          {
-            context.Users.FirstOrDefault(x => x.Id == userId);
-            user.Type = userRole;
-
             context.Users.Update(user);
-            await this.context.SaveChangesAsync();
+            result = await this.context.SaveChangesAsync();
          }
          catch
          {
-            user = null;
+
          }
 
-         return user;
+         return result > 0;
+      }
+
+      public async Task<User> GetUserByIdAsync(int userId)
+      {
+         return await context.Users.FirstOrDefaultAsync(x => x.Id == userId);
       }
    }
 }

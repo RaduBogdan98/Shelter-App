@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using ServiceManagementMicroservice.Domain.Dto;
 using ServiceManagementMicroservice.Model;
 using ServiceManagementMicroservice.Repository;
@@ -99,6 +97,26 @@ namespace ServiceManagementMicroservice.Controllers
          var servicesDto = services.Select(service => _serviceMapper.Map<ServiceDto>(service)).ToList();
 
          return Ok(servicesDto);
+      }
+
+      /// <summary>
+      /// Creates a Service User in the database
+      /// </summary>
+      /// <param name="serviceRequestDto"></param>
+      /// <returns></returns>
+      [HttpPost("UseService/{userId}/{serviceId}")]
+      [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceDto))]
+      public async Task<IActionResult> UseServiceAsync(int userId, int serviceId)
+      {
+         var saved = await _serviceManagementRepository.UseServiceAsync(userId, serviceId);
+
+         if (!saved)
+         {
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+         }
+
+         return Ok();
       }
 
       /// <summary>

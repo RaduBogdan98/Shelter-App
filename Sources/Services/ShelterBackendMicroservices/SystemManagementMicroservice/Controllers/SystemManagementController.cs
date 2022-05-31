@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,7 +7,8 @@ using System.Threading.Tasks;
 using SystemManagementMicroservice.Domain.Dto;
 using SystemManagementMicroservice.Repository;
 using AutoMapper;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
+using SystemManagementMicroservice.Model;
+using SystemManagementMicroservice.Helpers;
 
 namespace SystemManagementMicroservice.Controllers
 {
@@ -24,6 +24,21 @@ namespace SystemManagementMicroservice.Controllers
       {
          _adminRepository = adminRepository;
          _systemMapper = systemMapper;
+      }
+
+      [HttpPost("CreateRequest")]
+      [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      [ProducesResponseType(StatusCodes.Status200OK)]
+      public async Task<IActionResult> CreateProviderRequestAsync([FromBody] ProviderRequestDto providerRequestDto)
+      {
+         var providerRequest = _systemMapper.Map<ProviderRequest>(providerRequestDto);
+
+         var saved = await _adminRepository.CreateProviderRequestAsync(providerRequest);
+         if (!saved)
+         {
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+         }
+         return Ok();
       }
 
       /// <summary>
@@ -57,15 +72,18 @@ namespace SystemManagementMicroservice.Controllers
             return NotFound();
          }
 
-         var userId = providerRequest.OwnerId;
-         //give provider roles for userId
+         ContentResult userUpdateRequestResult = await HttpUtils.Instance.RouteRequest("https://localhost:8629/Users/" + $"GiveProviderAttributesToUser/{providerRequest.OwnerId}/{providerRequest.Company}/{providerRequest.Address}", "PUT");
+         if(userUpdateRequestResult.StatusCode != 200)
+         {
+            return userUpdateRequestResult;
+         }
 
          var deleted = await _adminRepository.DeleteProviderRequestAsync(providerRequestId);
-
          if (!deleted)
          {
             return StatusCode((int)HttpStatusCode.InternalServerError);
          }
+
          return Ok();
       }
 

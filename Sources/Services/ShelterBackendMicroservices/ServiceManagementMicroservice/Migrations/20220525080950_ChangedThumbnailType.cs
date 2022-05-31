@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ServiceManagementMicroservice.Migrations
 {
-    public partial class ChangedThumbnailType : Migration
+   public partial class ChangedThumbnailType : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

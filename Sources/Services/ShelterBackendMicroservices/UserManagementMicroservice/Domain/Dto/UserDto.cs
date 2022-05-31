@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using UserManagementMicroservice.Model;
+﻿using UserManagementMicroservice.Model;
 
 namespace UserManagementMicroservice.Domain.Dto
 {
-    public class UserDto
+   public class UserDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
