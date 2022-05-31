@@ -20,6 +20,13 @@ namespace ApplicationGateway.Controllers
          return await Router.Instance.RouteRequest(BASE_URL + "Create", Request, JsonConvert.SerializeObject(serviceRequestDto));
       }
 
+      [HttpPost]
+      [Route("UseService/{userId}/{serviceId}")]
+      public async Task<IActionResult> UseServiceAsync(int userId, int serviceId)
+      {
+         return await Router.Instance.RouteRequest(BASE_URL + $"UseService/{userId}/{serviceId}", Request);
+      }
+
       [HttpGet]
       [Route("GetAllServices")]
       public async Task<IActionResult> GetAllServicesAsync()
@@ -31,7 +38,7 @@ namespace ApplicationGateway.Controllers
       [Route("GetOwnedServices/{ownerId}")]
       public async Task<IActionResult> GetServicesByOwnerIdAsync(int ownerId)
       {
-          return await Router.Instance.RouteRequest(BASE_URL + $"GetOwnedServices/{ownerId}", Request);
+         return await Router.Instance.RouteRequest(BASE_URL + $"GetOwnedServices/{ownerId}", Request);
       }
 
       [HttpGet]

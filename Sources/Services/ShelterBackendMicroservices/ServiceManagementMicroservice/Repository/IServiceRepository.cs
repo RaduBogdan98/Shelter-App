@@ -1,7 +1,5 @@
 ﻿using ServiceManagementMicroservice.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ServiceManagementMicroservice.Repository
@@ -12,6 +10,7 @@ namespace ServiceManagementMicroservice.Repository
       Task<IEnumerable<Service>> GetAllServicesAsync();
       Task<IEnumerable<Service>> GetServicesByOwnerIdAsync(int ownerId);
       Task<IEnumerable<Service>> GetServicesByUserIdAsync(int ownerId);
+      Task<bool> UseServiceAsync(int userId, int serviceId);
       Task<bool> UpdateServiceAsync(Service serviceUpdateRequest);
       Task<bool> DeleteService(int serviceId);
 

@@ -26,5 +26,12 @@ namespace ApplicationGateway.Controllers
       {
          return await Router.Instance.RouteRequest(BASE_URL + $"Authenticate/{email}/{password}", Request);
       }
+
+      [HttpPut]
+      [Route("Update")]
+      public async Task<IActionResult> UpdateUserAsync([FromBody] UserDto user)
+      {
+         return await Router.Instance.RouteRequest(BASE_URL + "Update", Request, JsonConvert.SerializeObject(user));
+      }
    }
 }

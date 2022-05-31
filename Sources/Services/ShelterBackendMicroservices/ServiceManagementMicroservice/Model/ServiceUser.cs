@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ServiceManagementMicroservice.Model
 {
-   [Keyless]
    public class ServiceUser
    {
+      public int Id { get; set; }
+
       [Required]
       public int UserId { get; set; }
 

@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -73,6 +70,52 @@ namespace UserManagementMicroservice.Controllers
          var userDto = _userMapper.Map<UserDto>(user);
 
          return Ok(userDto);
+      }
+
+      /// <summary>
+      /// Updates user data
+      /// </summary>
+      /// <param name="userDto"></param>
+      /// <returns></returns>
+      [HttpPut("Update")]
+      [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+      [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(UserDto))]
+      public async Task<IActionResult> UpdateUserAsync([FromBody] UserDto userDto)
+      {
+         var user = _userMapper.Map<User>(userDto);
+         var saved = await _userRepository.UpdateUserAsync(user);
+
+         if (!saved)
+         {
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+         }
+
+         return Ok(userDto);
+      }
+
+      /// <summary>
+      /// Gets user by id
+      /// </summary>
+      /// <param name="userId"></param>
+      /// <returns></returns>
+      [HttpPut("GiveProviderAttributesToUser/{userId}/{company}/{address}")]
+      [ProducesResponseType(StatusCodes.Status404NotFound)]
+      [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserDto))]
+      public async Task<IActionResult> GiveProviderAttributesToUser(int userId, string company, string address)
+      {
+         var user = await _userRepository.GetUserByIdAsync(userId);
+         if (user == null)
+         {
+            return NotFound();
+         }
+
+         user.Type = UserType.Provider;
+         user.Address = address;
+         user.Company = company;
+
+         var userDto = _userMapper.Map<UserDto>(user);
+
+         return await UpdateUserAsync(userDto);
       }
    }
 }

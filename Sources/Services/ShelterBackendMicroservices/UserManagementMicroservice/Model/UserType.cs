@@ -2,8 +2,8 @@
 {
    public enum UserType
    {
-      Regular,
-      Provider,
-      Administrator
+      Regular = 0,
+      Provider = 1,
+      Administrator = 2
    }
 }

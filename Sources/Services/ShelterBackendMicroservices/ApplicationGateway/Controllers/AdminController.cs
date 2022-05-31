@@ -1,6 +1,8 @@
 ﻿using ApplicationGateway.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
+using SystemManagementMicroservice.Domain.Dto;
 
 namespace ApplicationGateway.Controllers
 {
@@ -19,6 +21,14 @@ namespace ApplicationGateway.Controllers
       }
 
       [HttpPost]
+      [Route("CreateRequest")]
+      public async Task<IActionResult> CreateProviderRequestAsync([FromBody] ProviderRequestDto providerRequestDto)
+      {
+         return await Router.Instance.RouteRequest(BASE_URL + "CreateRequest", Request, JsonConvert.SerializeObject(providerRequestDto));
+      }
+
+
+      [HttpPut]
       [Route("AcceptRequest/{providerRequestId}")]
       public async Task<IActionResult> AcceptProviderRequestAsync(int providerRequestId)
       {

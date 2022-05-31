@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserManagementMicroservice.Migrations
 {
-    public partial class ChangedProfilePictureType : Migration
+   public partial class ChangedProfilePictureType : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

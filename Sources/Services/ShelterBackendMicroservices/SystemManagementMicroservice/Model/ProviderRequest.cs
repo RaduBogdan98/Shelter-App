@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using UserManagementMicroservice.Model;
 
 namespace SystemManagementMicroservice.Model
 {
@@ -11,9 +10,15 @@ namespace SystemManagementMicroservice.Model
       public int OwnerId { get; set; }
 
       [Required]
+      [MaxLength(100)]
+      public string Company { get; set; }
+
+      [Required]
+      [MaxLength(200)]
+      public string Address { get; set; }
+
+      [Required]
       [MaxLength(1000)]
       public string Reason { get; set; }
-
-      public User Owner { get; set; }
    }
 }
