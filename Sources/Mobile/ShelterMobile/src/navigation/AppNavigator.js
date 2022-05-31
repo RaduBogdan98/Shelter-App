@@ -1,6 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { useSelector } from "react-redux";
 
 import BottomTabNavigator from '../navigation/BottomTabNavigator';
 
@@ -30,9 +31,13 @@ const AuthStack = () => {
 }
 
 export default function AppNavigator() {
+
+    const userDetails = useSelector(state => state.user)
+    console.log("🚀 ~ file: AppNavigator.js ~ line 36 ~ AppNavigator ~ userDetails", userDetails)
+
     return (
         <NavigationContainer>
-            {true ? <AppStack /> : <AuthStack />}
+            {userDetails != undefined ? <AppStack /> : <AuthStack />}
         </NavigationContainer>
     );
 }

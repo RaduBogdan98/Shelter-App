@@ -7,6 +7,8 @@ import {
     TextInput,
     TouchableOpacity,
 } from "react-native";
+import { useDispatch } from "react-redux";
+
 import { Button } from "../components";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import LoginImage from "../../assets/generalImages/loginImage";
@@ -21,7 +23,10 @@ import { style } from "../resources/colors";
 import { strings } from "../resources/strings";
 import { isValidEmail, showToast } from "../resources/utils";
 
+import { login } from "../store/actions/users/userActions"
+
 const LoginScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -29,7 +34,9 @@ const LoginScreen = ({ navigation }) => {
 
     const onLoginPressed = () => {
         console.log(email, password);
-        if (isValidEmail(email)) console.log("Login");
+        if (isValidEmail(email)) {
+            dispatch(login(email, password))
+        }
         else {
             showToast("error", "Invalid Email");
         }

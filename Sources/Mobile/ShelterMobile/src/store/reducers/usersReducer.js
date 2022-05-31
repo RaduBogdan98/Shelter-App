@@ -26,6 +26,7 @@ const userReducer = (state = initialState, action) => {
         case LOGIN:
             return {
                 ...state,
+                user: action.payload,
             };
             break;
         case TEST:
