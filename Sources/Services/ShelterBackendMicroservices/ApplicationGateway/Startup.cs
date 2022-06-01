@@ -9,6 +9,8 @@ namespace ApplicationGateway
 {
    public class Startup
    {
+      private const string CORS_POLICY_NAME = "_myAllowSpecificOrigins";
+
       public Startup(IConfiguration configuration)
       {
          Configuration = configuration;
@@ -23,6 +25,12 @@ namespace ApplicationGateway
          services.AddSwaggerGen(c =>
          {
             c.SwaggerDoc("gateway", new OpenApiInfo { Title = "ApplicationGateway", Version = "v1" });
+         });
+         services.AddCors(options =>
+         {
+             options.AddPolicy(CORS_POLICY_NAME, builder =>
+                     builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+                         .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
          });
       }
 
@@ -39,6 +47,8 @@ namespace ApplicationGateway
          app.UseHttpsRedirection();
 
          app.UseRouting();
+
+         app.UseCors(CORS_POLICY_NAME);
 
          app.UseAuthorization();
 

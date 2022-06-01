@@ -17,6 +17,7 @@ namespace ServiceManagementMicroservice
    public class Startup
    {
       private readonly string CONNECTION_STRING = "Server=tcp:shelterserv.database.windows.net,1433;Initial Catalog=ServicesDb;Persist Security Info=False;User ID=shelteradmin;Password={PASSWORD};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+      private const string CORS_POLICY_NAME = "_myAllowSpecificOrigins";
 
       public Startup(IConfiguration configuration)
       {
@@ -54,7 +55,13 @@ namespace ServiceManagementMicroservice
          services.AddControllers();
          services.AddScoped<IServiceRepository, ServiceRepository>();
          services.AddAutoMapper(typeof(ServiceMapper));
-      }
+         services.AddCors(options =>
+         {
+             options.AddPolicy(CORS_POLICY_NAME, builder =>
+                     builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+                         .AllowAnyHeader().AllowAnyMethod().AllowCredentials());
+         });
+        }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
       public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -67,6 +74,8 @@ namespace ServiceManagementMicroservice
          }
 
          app.UseRouting();
+
+         app.UseCors(CORS_POLICY_NAME);
 
          app.UseEndpoints(endpoints =>
          {
