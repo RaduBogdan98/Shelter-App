@@ -23,10 +23,18 @@ namespace ApplicationGateway.Helpers
             using (HttpResponseMessage response = await httpClient.SendAsync(newRequest))
             {
                string stringContent = await response.Content.ReadAsStringAsync();
-               JToken responseContent = JsonConvert.DeserializeObject<JArray>(stringContent)[0];
-
-               point.Latitude = Double.Parse(responseContent["lat"].ToString());
-               point.Longitude = Double.Parse(responseContent["lon"].ToString());
+               JArray responseArray = JsonConvert.DeserializeObject<JArray>(stringContent);
+               if (responseArray != null && responseArray.Count > 0)
+               {
+                  JToken responseContent = responseArray[0];
+                  point.Latitude = Double.Parse(responseContent["lat"].ToString());
+                  point.Longitude = Double.Parse(responseContent["lon"].ToString());
+               }
+               else
+               {
+                  point.Latitude = 0;
+                  point.Longitude = 0;
+               }
             }
          }
 
