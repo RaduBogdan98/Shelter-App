@@ -8,9 +8,18 @@ import { showToast } from "../resources/utils";
 import { style } from "../resources/colors";
 import { strings } from "../resources/strings";
 
+import { getNews } from "../store/actions/services/servicesActions"
+
 const HomeScreen = ({ navigation }) => {
-    const userDetails = useSelector(state => state.users.user)
     const dispatch = useDispatch();
+    const userDetails = useSelector(state => state.users.user)
+    const news = useSelector(state => state.services.news)
+    console.log("🚀 ~ news", news)
+
+    useEffect(() => {
+        dispatch(getNews())
+    }, []);
+
 
     const handleBecomeProviderPress = () => navigation.navigate("BecomeProviderScreen");
 

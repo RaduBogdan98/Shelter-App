@@ -1,8 +1,11 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { Text, View, StyleSheet, FlatList } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 
 import { SearchBar, FilterButtons, ItemCard } from "../components";
 import { style } from "../resources/colors";
+
+import { getServices } from "../store/actions/services/servicesActions"
 
 export const DATA = [
     {
@@ -85,6 +88,13 @@ export const DATA = [
 ];
 
 const FeedScreen = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const services = useSelector(state => state.services.allServices)
+    console.log("🚀 ~ services", services)
+
+    useEffect(() => {
+        dispatch(getServices())
+    }, []);
 
     const onCardPress = (item) => {
         navigation.navigate("DetailsScreen", { item })
