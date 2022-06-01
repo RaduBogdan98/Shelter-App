@@ -13,7 +13,6 @@ namespace ServiceManagementMicroservice.Repository
       Task<bool> UseServiceAsync(int userId, int serviceId);
       Task<bool> UpdateServiceAsync(Service serviceUpdateRequest);
       Task<bool> DeleteService(int serviceId);
-
-      
+      Task<Service> GetServiceByIdAsync(int serviceId);
    }
 }

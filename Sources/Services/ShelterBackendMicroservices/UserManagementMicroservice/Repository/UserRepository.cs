@@ -3,6 +3,7 @@ using UserManagementMicroservice.DataAccess;
 using UserManagementMicroservice.Model;
 using Microsoft.EntityFrameworkCore;
 using ApplicationGateway.Helpers;
+using System;
 
 namespace UserManagementMicroservice.Repository
 {
@@ -52,7 +53,7 @@ namespace UserManagementMicroservice.Repository
             context.Users.Update(user);
             result = await this.context.SaveChangesAsync();
          }
-         catch
+         catch (Exception e)
          {
 
          }
@@ -62,7 +63,7 @@ namespace UserManagementMicroservice.Repository
 
       public async Task<User> GetUserByIdAsync(int userId)
       {
-         return await context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+         return await context.Users.AsNoTracking<User>().FirstOrDefaultAsync(x => x.Id == userId);
       }
    }
 }

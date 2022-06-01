@@ -103,5 +103,10 @@ namespace ServiceManagementMicroservice.Repository
 
          return result > 0;
       }
+
+      public async Task<Service> GetServiceByIdAsync(int serviceId)
+      {
+         return await context.Services.AsNoTracking<Service>().FirstOrDefaultAsync(x => x.Id == serviceId);
+      }
    }
 }

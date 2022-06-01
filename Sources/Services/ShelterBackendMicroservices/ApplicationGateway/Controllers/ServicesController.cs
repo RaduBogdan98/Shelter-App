@@ -61,5 +61,11 @@ namespace ApplicationGateway.Controllers
       {
          return await Router.Instance.RouteRequest(BASE_URL + $"DeleteService/{serviceId}", Request);
       }
+
+      [HttpGet("GetServiceById/{serviceId}")]
+      public async Task<IActionResult> GetServicesByIdAsync(int serviceId)
+      {
+         return await Router.Instance.RouteRequest(BASE_URL + $"GetServiceById/{serviceId}", Request);
+      }
    }
 }

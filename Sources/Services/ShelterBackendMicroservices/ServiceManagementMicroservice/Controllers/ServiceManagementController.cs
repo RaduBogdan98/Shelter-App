@@ -60,6 +60,22 @@ namespace ServiceManagementMicroservice.Controllers
          return Ok(servicesDto);
       }
 
+      [HttpGet("GetServiceById/{serviceId}")]
+      [ProducesResponseType(StatusCodes.Status404NotFound)]
+      [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ServiceDto))]
+      public async Task<IActionResult> GetServicesByIdAsync(int serviceId)
+      {
+         var service = await _serviceManagementRepository.GetServiceByIdAsync(serviceId);
+         if (service == null)
+         {
+            return NotFound();
+         }
+
+         var serviceDto = _serviceMapper.Map<ServiceDto>(service);
+
+         return Ok(serviceDto);
+      }
+
       /// <summary>
       /// Gets all the services for a provider.
       /// </summary>
